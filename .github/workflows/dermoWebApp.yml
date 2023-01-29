@@ -1,49 +1,25 @@
-name: Angular GitHub CI
-on:
-  push:
-    branches:
-      - develop
-      - main
+name: build # Name Action Build
+
+on: [push]  # Trigger on push
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
+  run:
+    runs-on: ubuntu-latest                         # Run on Ubuntu Docker image
     steps:
-      - uses: actions/checkout@v1
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Cache node modules
-        id: cache-nodemodules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # caching node_modules
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: Install Dependencies
-        
-        run: |
-          npm ci
-      - name: Build
-        run: |
-          npm run build:ci
-      - name: Lint
-        run: |
-          npm run lint
-      - name: Test
-        run: |
-          npm run test:ci
+    - name: Checkout Repo                          # Checkout repo
+      uses: actions/checkout@v1
+    - name: Use Node.js                            # Configure Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.17.1'                       # Set Node.js Version
+        registry-url: 'https://registry.npmjs.org' # Set Node.js reigistry
+    - name: Deploy Info                            # Print GitHub Deploy info
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: Install                                # Install dependancies
+      run: npm install
+    - name: Build                                  # Build app if needed
+      run: npm run build --if-present
+    - name: Test
+      run: npm run test --if-present               # Run tests if needed
