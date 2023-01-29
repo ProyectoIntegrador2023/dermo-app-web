@@ -45,10 +45,13 @@ jobs:
           npm ci
       - name: Build
         run: |
+          cd Dermo-Web-App/src
           npm run build -- --prod
       - name: Lint
         run: |
+          cd Dermo-Web-App/src
           npm run lint
       - name: Test
         run: |
+          cd Dermo-Web-App/src
           npm run test -- --prod
