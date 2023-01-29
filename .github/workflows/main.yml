@@ -53,4 +53,5 @@ jobs:
           npm run lint
       - name: Test
         run: |
-            npm run test
+          cd Dermo-Web-App/
+          npm run test
