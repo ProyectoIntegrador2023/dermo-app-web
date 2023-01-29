@@ -19,6 +19,7 @@ jobs:
       - name: Prepare
         run: |
           cd Dermo-Web-App/src
-          npm install
+          npm ci
           npm run build
+          npm run lint
           #npm run test
