@@ -46,7 +46,7 @@ jobs:
       - name: Build
         run: |
           cd Dermo-Web-App/src
-          npm run build -- --prod
+          npm run build
       - name: Lint
         run: |
           cd Dermo-Web-App/src
@@ -54,4 +54,4 @@ jobs:
       - name: Test
         run: |
           cd Dermo-Web-App/src
-          npm run test -- --prod
+          npm run test
