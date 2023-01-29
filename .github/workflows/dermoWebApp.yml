@@ -6,7 +6,8 @@ on:
     branches: [ develop ]
   pull_request:
     branches: [ develop ]
-    
+  workflow_dispatch:
+  
 jobs:
   ci:
     runs-on: ubuntu-latest
