@@ -47,8 +47,8 @@ jobs:
           else
           npm i
           fi
-#        run: |
-#          npm ci
+        run: |
+          npm ci
       - name: Build
         run: |
           npm run build -- --prod
