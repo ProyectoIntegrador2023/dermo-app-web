@@ -1,20 +1,33 @@
-on: [ push, pull_request ]
+name: Build, Test & Deploy
 
-name: CI
+on:
+  push:
+    branches: [master]
+
 jobs:
-  test:
+  build:
+    name: All Steps (Build, Test & Deploy)
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v1
         with:
-          persist-credentials: false
-      - name: Install Node
-        uses: actions/setup-node@v1
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.2
         with:
-          node-version: '16.x'
-#      - name: git
-#        run: git config --global url."https://${{ secrets.PAT }}@github.com/".insteadOf ssh://git@github.com/
-     
+          node-version: ${{ matrix.node-version }}
+
       - name: Install Dependencies
         run: npm ci
