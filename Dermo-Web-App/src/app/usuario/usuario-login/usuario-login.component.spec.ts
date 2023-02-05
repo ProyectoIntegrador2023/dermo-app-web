@@ -1,7 +1,6 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 import { UsuarioLoginComponent } from './usuario-login.component';
 
@@ -11,7 +10,8 @@ describe('UsuarioLoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsuarioLoginComponent]
+      declarations: [ UsuarioLoginComponent],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   }));
