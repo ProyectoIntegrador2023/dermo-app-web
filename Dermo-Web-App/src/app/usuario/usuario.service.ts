@@ -9,6 +9,10 @@ export class UsuarioService {
 
     private backUrl: string = "http://localhost:5000"
 
-    constructor(private htt: HttpClient) { }
+    constructor(private http: HttpClient) { }
+
+    userSignUp(nombre: string, contrasena: string): Observable<any>{
+      return this.http.post<any>(`${this.backUrl}/signin`, {"nombre": nombre, "contrasena": contrasena})
+  }
 
 }
