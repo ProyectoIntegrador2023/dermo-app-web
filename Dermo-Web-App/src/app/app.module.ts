@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AppHeaderModule } from './app-header/app-header.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AppHeaderModule } from './app-header/app-header.module';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     UsuarioModule,
     AppHeaderModule,
