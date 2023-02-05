@@ -16,4 +16,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goTo(menu: string){}
+
 }
