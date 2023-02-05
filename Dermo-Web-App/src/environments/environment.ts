@@ -1,3 +1,3 @@
-export class Environment {
-    
-}
+export const environment = {
+  production: false
+};
