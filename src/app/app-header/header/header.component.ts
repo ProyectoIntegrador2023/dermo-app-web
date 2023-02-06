@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,15 +6,12 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   constructor(
     private routerPath: Router,
     private router: ActivatedRoute
   ) { }
-
-  ngOnInit(): void {
-  }
 
   goTo(menu: string){
     const userId = parseInt(this.router.snapshot.params.userId)

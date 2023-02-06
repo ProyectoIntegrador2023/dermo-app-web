@@ -37,19 +37,15 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Install Dependencies	
+      - name: Install Dependencies
         run: |
-          cd Dermo-Web-App/src
           npm ci
       - name: Build
         run: |
-          cd Dermo-Web-App/src
           npm run build
       - name: Lint
         run: |
-          cd Dermo-Web-App/
           npm run lint
       - name: Test
         run: |
-          cd Dermo-Web-App/
           npm test -- --no-watch --no-progress --browsers=ChromeHeadless

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-    private backUrl: string = "http://localhost:5000"
+    private backUrl = "http://localhost:5000"
 
     constructor(private http: HttpClient) { }
 

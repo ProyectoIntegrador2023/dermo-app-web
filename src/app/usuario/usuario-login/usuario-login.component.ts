@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UsuarioService } from '../usuario.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './usuario-login.component.html',
   styleUrls: ['./usuario-login.component.css']
 })
-export class UsuarioLoginComponent implements OnInit {
+export class UsuarioLoginComponent {
 
   helper = new JwtHelperService();
 
@@ -18,10 +18,7 @@ export class UsuarioLoginComponent implements OnInit {
     private router: Router
   ) { }
 
-  error: boolean = false
-
-  ngOnInit() {
-  }
+  error = false
 
   onLogInUsuario(nombre: string, contrasena: string){
     this.error = false
