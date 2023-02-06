@@ -33,8 +33,8 @@ export class UsuarioSignupComponent implements OnInit {
   registrarUsuario(){
     this.usuarioService.userSignUp(this.usuarioForm.get('nombre')?.value, this.usuarioForm.get('password')?.value)
     .subscribe(res => {
-      const decodedToken = this.helper.decodeToken(res.token);
-      this.router.navigate([`/albumes/${decodedToken.sub}/${res.token}`])
+      console.log(res)
+      this.router.navigate([`/signin`])
       this.showSuccess()
     },
     error => {

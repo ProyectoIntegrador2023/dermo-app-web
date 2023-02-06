@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://mjtkqn6y2k.execute-api.us-east-1.amazonaws.com/dev/*",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
