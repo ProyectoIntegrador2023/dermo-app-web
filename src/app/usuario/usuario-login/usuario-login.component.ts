@@ -25,10 +25,13 @@ export class UsuarioLoginComponent {
 
     this.usuarioService.userLogIn(nombre, contrasena)
     .subscribe(res => {
-      const decodedToken = this.helper.decodeToken(res.token);
-      this.router.navigate([`${decodedToken.sub}/${res.token}`])
+      console.log(res);
+      const token = res.token;
+      sessionStorage.setItem('token', token);
+      this.router.navigate(['/'])
     },
     error => {
+      console.error(error);
       this.error=true
     })
   }

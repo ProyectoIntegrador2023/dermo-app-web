@@ -3,7 +3,7 @@ export const environment = {
 };
 
 export const authentication = {
-  baseEndpoint: 'https://mjtkqn6y2k.execute-api.us-east-1.amazonaws.com/dev',
+  baseEndpoint: 'https://fvuknp64n6.execute-api.us-east-1.amazonaws.com/dev',
   signupPath: '/auth/register',
   loginPath: '/auth/login'
 }
