@@ -5,14 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale-1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="D:\Soni\Integrador2\dermo-app-web\Dermo-Web-App\src\styles.css">
+    <link rel="stylesheet" type="text/css" href="/src/styles.css">
 </head>
 <body>
     <div class="formulario">
         <h1>Inicia Sesión</h1>
         <form method="post">
+            <div *ngIf="error">
+                <div class="alert alert-danger" role="alert">
+                    Usuario o contraseña incorrecto
+                </div>
+            </div>
             <div class="username">
-                <label for="staticEmail" class="col-lg-3 col-form-label">Usuario</label>
+                <label for="staticEmail" class="col-lg-3 col-form-label">usuario@correo.com</label>
                 <input #usuario type="text" class="form-control">
             </div>
             <div class="username">

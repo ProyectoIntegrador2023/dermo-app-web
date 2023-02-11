@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from '../usuario.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-usuario-signup',
@@ -19,8 +20,11 @@ export class UsuarioSignupComponent implements OnInit {
     private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+    private titulo:Title
+  ) {
+    titulo.setTitle('Registro')
+  }
 
   ngOnInit() {
     this.usuarioForm = this.formBuilder.group({
