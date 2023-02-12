@@ -3,8 +3,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  background: url(./assets/img/background2.png) no-repeat center center fixed;
-  background-size: 1500px 600px;
+  /*background: url(./assets/img/banner.png) no-repeat center center fixed;*/
+  background-size: 1500px 700px;
   height: 100vh;
 }
 
@@ -150,7 +150,7 @@ header{
 
 nav a{
     font-weight: 600;
-    padding-right: 10px;
+    padding-right: 25px;
 }
 
 nav a:hover{
@@ -166,4 +166,25 @@ nav a:hover{
     }
   }
 
+.fondoApp{
+    margin: 0;
+    width: 100%;
+    height: 550px;
+    border-radius: 0px;
+    font-size: 18px;
+    position: absolute;
+    top: 10.3%;
+    padding: 1px 0px;
+}
+
+.pagePrincipal{
+    margin: 0;
+    position: absolute;
+    top: 41.75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1410px;
+    background: white;
+    border-radius: 10px;
+}
 
