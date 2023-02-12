@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { UsuarioLoginComponent } from './usuario-login.component';
 
@@ -11,7 +12,14 @@ describe('UsuarioLoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UsuarioLoginComponent],
-      imports: [HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule,
+        ToastrModule.forRoot({
+          timeOut: 7000,
+          positionClass: 'toast-bottom-right',
+          preventDuplicates: true,
+        }),
+      ]
     })
     .compileComponents();
   }));
