@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UsuarioService } from '../usuario.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class UsuarioLoginComponent {
 
   constructor(
     private usuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   error = false
@@ -28,11 +30,21 @@ export class UsuarioLoginComponent {
       console.log(res);
       const token = res.token;
       sessionStorage.setItem('token', token);
-      this.router.navigate(['/'])
+      this.router.navigate(['/login']);
+      this.showSuccess()
     },
     error => {
       console.error(error);
       this.error=true
     })
   }
+
+  showError(error: string){
+    this.toastr.error(error, "Error")
+  }
+
+  showSuccess() {
+    this.toastr.success(`Ha ingresado exitosamente`, "Inicio exitoso");
+  }
+
 }
