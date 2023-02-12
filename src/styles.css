@@ -61,17 +61,6 @@ form .username{
     transition: .5s;
 }
 
-.username span::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #4D94E1;
-    transition: .5s;
-}
-
 .username input:focus ~ label,
 .username input:focus ~ label{
     top: -5px;
@@ -81,6 +70,12 @@ form .username{
 .username input:focus ~ span::before,
 .username input:focus ~ span::before{
     width: 100%;
+}
+
+.separador{
+  border-style: solid;
+  color: darkgoldenrod;
+  border-style: 2px;
 }
 
 button{
