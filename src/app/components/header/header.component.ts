@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,17 +8,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(
-    private routerPath: Router,
-    private router: ActivatedRoute
-  ) { }
+  regis: boolean = false;
 
-  goTo(menu: string){
-    const userId = parseInt(this.router.snapshot.params.userId)
-    const token = this.router.snapshot.params.userToken
-    if(menu === "logIn"){
-      this.routerPath.navigate([`/`])
-    }
- }
+  @Output() openLogin = new EventEmitter<boolean>();
+
+  title = 'Dermo App';
+
+  constructor() { }
+
+  formRegis() {
+    this.regis = true;
+  }
+
+  formLogin() {
+    console.log('Estoy ingresando')
+    this.openLogin.emit(true);
+  }
 }
 
