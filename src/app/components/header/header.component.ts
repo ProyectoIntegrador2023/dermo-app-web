@@ -8,16 +8,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent {
 
-  regis: boolean = false;
-
   @Output() openLogin = new EventEmitter<boolean>();
+  @Output() openRegis = new EventEmitter<boolean>();
 
   title = 'Dermo App';
 
   constructor() { }
 
   formRegis() {
-    this.regis = true;
+    console.log('Estoy rgistrando')
+    this.openRegis.emit(true);
   }
 
   formLogin() {
@@ -25,4 +25,3 @@ export class HeaderComponent {
     this.openLogin.emit(true);
   }
 }
-
