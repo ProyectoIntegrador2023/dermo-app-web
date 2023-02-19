@@ -1,68 +1,49 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width-device-width, initial-scale-1.0">
-  <link rel="stylesheet" type="text/css" href="/src/styles.css">
-  <title>DermoWebApp - Registro</title>
-</head>
-<body>
-          <div class="formulario">
-              <h1>Crea tu cuenta</h1>
-              <form [formGroup]="usuarioForm" (ngSubmit)="registrarUsuario()">
-                <div class="form-group">
-                  <div class="username">
-                    <input formControlName="nombre" type="text" class="form-control">
-                    <label for="nombre" class="col-lg-3 col-form-label">Correo electrónico</label>
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('nombre')?.hasError('required') && usuarioForm.get('nombre')?.touched">
-                    Debe ingresar un usuario para registrarse
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('nombre')?.hasError('maxlength')">
-                    El usuario no debe exceder los 50 carácteres
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="username">
-                    <input formControlName="password" type="password" class="form-control">
-                    <label for="password" class="col-lg-3 col-form-label">Contraseña</label>
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('required') && usuarioForm.get('password')?.touched">
-                    Debe ingresar una contraseña para registrarse
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('maxlength')">
-                    La contraseña no debe exceder los 50 carácteres
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('password')?.hasError('minlength')">
-                    La contraseña debe tener más de 4 carácteres
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="username">
-                    <input formControlName="confirmPassword"  type="password" class="form-control">
-                    <label for="confirmPassword" class="col-lg-3 col-form-label">Confirmar contraseña</label>
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('confirmPassword')?.hasError('required') && usuarioForm.get('confirmPassword')?.touched">
-                    Debe ingresar una contraseña para registrarse
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('confirmPassword')?.hasError('maxlength')">
-                    La contraseña no debe exceder los 50 carácteres
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('confirmPassword')?.hasError('minlength')">
-                    La contraseña debe tener más de 4 carácteres
-                  </div>
-                  <div class="alert alert-danger my-3" *ngIf="usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">
-                    Las contraseñas no coinciden
-                  </div>
-                </div>
-                <div class="enviar">
-                  <button  type="submit" class="btn btn-primary col-8" [disabled]="!usuarioForm.valid || usuarioForm.get('confirmPassword')?.value !== usuarioForm.get('password')?.value">Registrate</button>
-                </div>
-                <div class="inicio">
-                  <p><input type="checkbox">Al registrarse acepta los <a href="/">terminos y condiciones</a></p>
-                </div>
-              </form>
+<div class="background">
+  <div class="formulario">
+    <div class="container-form">
+      <i class="icon-close fa-solid fa-circle-xmark" (click)="close()"></i>
+      <h1>Resgistrarse</h1>
+      <form [formGroup]="signUpForm">
+        <div *ngIf="error">
+          <div class="alert alert-danger" role="alert">
+            Usuario o contraseña incorrectos
+          </div>
         </div>
-</body>
-</html>
+
+        <div class="container-input-message">
+          <div class="container-input">
+            <i class="icon-input fa-solid fa-envelope"></i>
+            <input formControlName="email" placeholder="Correo electrónico" type="text" class="input">
+          </div>
+          <div *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].errors"
+            class="message-error">
+            <div>Campo obligatorio o Correo inválido</div>
+          </div>
+        </div>
+
+        <div class="container-input-message">
+          <div class="container-input">
+            <i class="icon-input fa-solid fa-lock"></i>
+            <input id="passwordForm" formControlName="password" placeholder="Contraseña" type="password" class="input">
+            <i *ngIf="!viewPassword" class="icon-input-password fa-solid fa-eye"
+              (click)="changeType('passwordForm')"></i>
+            <i *ngIf="viewPassword" class="icon-input-password fa-solid fa-eye-slash"
+              (click)="changeType('passwordForm')"></i>
+          </div>
+          <div *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors"
+            class="message-error">
+            <div>Campo obligatorio</div>
+          </div>
+        </div>
+        <div class="enviar">
+          <button (click)="onSignUpUsuario()" [disabled]="signUpForm.invalid" type="button"
+            class="btn btn-primary">Iniciar sesión</button>
+        </div>
+        <div class="inicio">
+          <p>¿Ya tienes cuenta? <a href="/login">Iniciar Sesión</a></p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
