@@ -1,35 +1,47 @@
-<!doctype html>
+<div class="background">
+  <div class="formulario">
+      <div class="container-form">
+          <i class="icon-close fa-solid fa-circle-xmark" (click)="close()"></i>
+          <h1>Inicia Sesión</h1>
+          <form [formGroup]="loginForm">
+              <div *ngIf="error">
+                  <div class="alert alert-danger" role="alert">
+                      Usuario o contraseña incorrecto
+                  </div>
+              </div>
+              <div class="container-input-message">
+                  <div class="container-input">
+                      <i class="icon-input fa-solid fa-envelope"></i>
+                      <input formControlName="email" placeholder="Correo electrónico" type="text" class="input">
+                  </div>
+                  <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors"
+                      class="message-error">
+                      <div>Campo obligatorio o Correo invalido</div>
+                  </div>
+              </div>
+              <div class="container-input-message">
+                  <div class="container-input">
+                      <i class="icon-input fa-solid fa-lock"></i>
+                      <input id="passwordForm" formControlName="password" placeholder="Contraseña" type="password"
+                          class="input">
+                      <i *ngIf="!viewPassword" class="icon-input-password fa-solid fa-eye"
+                          (click)="changeType('passwordForm')"></i>
+                      <i *ngIf="viewPassword" class="icon-input-password fa-solid fa-eye-slash"
+                          (click)="changeType('passwordForm')"></i>
+                  </div>
+                  <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors"
+                      class="message-error">
+                      <div>Campo obligatorio</div>
+                  </div>
+              </div>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale-1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="/src/styles.css">
-</head>
-<body>
-    <div class="formulario">
-        <h1>Inicia Sesión</h1>
-        <form method="post">
-            <div *ngIf="error">
-                <div class="alert alert-danger" role="alert">
-                    Usuario o contraseña incorrecto
-                </div>
-            </div>
-            <div class="username">
-                <label for="staticEmail" class="col-lg-3 col-form-label">usuario@correo.com</label>
-                <input #usuario type="text" class="form-control">
-            </div>
-            <div class="username">
-                <label for="inputPassword" class="col-lg-3 col-form-label">Contraseña</label>
-                <input #contrasena type="password" class="form-control">
-            </div>
-            <div class="enviar">
-                <button (click)="onLogInUsuario(usuario.value, contrasena.value)" type="button" class="btn btn-primary col-8">Ingresar</button>
-            </div>
-            <div class="inicio">
-                <p>¿No tienes cuenta? <a href="/signup">Registrate</a></p>
-            </div>
-        </form>
-    </div>
-</body>
+              <div class="enviar">
+                  <button (click)="onLogInUsuario()" [disabled]="loginForm.invalid" type="button" class="btn btn-primary">Iniciar sesión</button>
+              </div>
+              <div class="inicio">
+                  <p>¿No tienes cuenta? <a href="/signup">Registrate</a></p>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
