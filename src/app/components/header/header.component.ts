@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +15,7 @@ export class HeaderComponent {
   constructor() { }
 
   formRegis() {
-    console.log('Estoy rgistrando')
+    console.log('Estoy registrando')
     this.openRegis.emit(true);
   }
 

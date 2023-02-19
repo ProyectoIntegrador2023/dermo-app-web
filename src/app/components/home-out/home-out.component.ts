@@ -15,6 +15,7 @@ export class HomeOutComponent {
   }
 
   eventRegis(bol: boolean) {
+    console.log('estoy ingresando a home regis')
     this.regis = bol;
   }
 
