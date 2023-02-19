@@ -17,8 +17,8 @@ export class UsuarioService {
     return this.http.post<UserSignInRs>(`${authentication.baseEndpoint}${authentication.loginPath}`, userSignInRq)
   }
 
-  userSignUp(nombre: string, contrasena: string): Observable<UserSignUpRs> {
-    const userSignUpRq: UserSignUpRq = { "email": nombre, "password": contrasena };
+  userSignUp(signUpDto: UserSignUpRq): Observable<UserSignUpRs> {
+    const userSignUpRq: UserSignUpRq = { "email": signUpDto.email, "password": signUpDto.password };
     return this.http.post<UserSignUpRs>(`${authentication.baseEndpoint}${authentication.signupPath}`, userSignUpRq)
   }
 
