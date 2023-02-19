@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { UsuarioModule } from './components/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeOutComponent } from './components/home-out/home-out.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeOutComponent
+    HomeOutComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
