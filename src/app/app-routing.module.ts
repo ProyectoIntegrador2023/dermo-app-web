@@ -6,15 +6,10 @@ import { UsuarioSignupComponent } from './usuario/usuario-signup/usuario-signup.
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '**',
     component: UsuarioLoginComponent,
     pathMatch: 'full'
   },
-  {
-    path: 'signup',
-    component: UsuarioSignupComponent,
-    pathMatch: 'full'
-  }
 ]
 
 
