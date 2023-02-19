@@ -1,8 +1,8 @@
-<app-header (openLogin)="eventLogin($event)"></app-header>
-<app-header (openRegis)="eventRegis($event)"></app-header>
+<app-header (openLogin)="eventLogin($event)" (openRegis)="eventRegis($event)"></app-header>
 
 <div class="home-out">
     <img src="assets/img/banner.png" class="fondoApp" alt="fondo de aplicacion">
 </div>
+
 <app-usuario-login (closeLogin)="eventLogin($event)" *ngIf="login"></app-usuario-login>
 <app-usuario-signup (closeSignUp)="eventRegis($event)" *ngIf="regis"></app-usuario-signup>
