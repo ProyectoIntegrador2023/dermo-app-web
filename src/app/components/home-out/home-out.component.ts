@@ -14,4 +14,8 @@ export class HomeOutComponent {
     this.login = bol;
   }
 
+  eventRegis(bol: boolean) {
+    this.regis = bol;
+  }
+
 }
