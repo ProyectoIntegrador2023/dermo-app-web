@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuarioModule } from './components/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeOutComponent } from './components/home-out/home-out.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeOutComponent
   ],
   imports: [
     BrowserModule,
