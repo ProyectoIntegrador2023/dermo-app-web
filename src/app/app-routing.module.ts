@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsuarioLoginComponent } from './components/usuario/usuario-login/usuario-login.component';
-import { UsuarioSignupComponent } from './components/usuario/usuario-signup/usuario-signup.component';
+import { HomeOutComponent } from './components/home-out/home-out.component';
 
 
 const routes: Routes = [
   {
     path: '**',
-    component: UsuarioLoginComponent,
+    component: HomeOutComponent,
     pathMatch: 'full'
   },
 ]
