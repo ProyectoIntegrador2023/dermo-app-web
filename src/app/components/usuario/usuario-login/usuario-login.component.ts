@@ -6,6 +6,24 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserSignInRq } from '../models/userSignIn.model';
 
+export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    let control = formGroup.controls[controlName];
+    let matchingControl = formGroup.controls[matchingControlName]
+    if (
+      matchingControl.errors &&
+      !matchingControl.errors.confirmPasswordValidator
+    ) {
+      return;
+    }
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ confirmPasswordValidator: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  };
+}
+
 
 @Component({
   selector: 'app-usuario-login',
@@ -33,7 +51,8 @@ export class UsuarioLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', Validators.required]
-    });
+    },
+    );
   }
 
   error = false

@@ -6,6 +6,25 @@ import { UsuarioService } from '../usuario.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UserSignUpRq } from '../models/userSignUp.model';
 
+export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    let control = formGroup.controls[controlName];
+    let matchingControl = formGroup.controls[matchingControlName]
+    if (
+      matchingControl.errors &&
+      !matchingControl.errors.confirmPasswordValidator
+    ) {
+      return;
+    }
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ confirmPasswordValidator: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  };
+}
+
+
 @Component({
   selector: 'app-usuario-signup',
   templateUrl: './usuario-signup.component.html',
@@ -16,6 +35,7 @@ export class UsuarioSignupComponent implements OnInit {
   helper = new JwtHelperService();
   signUpDto: UserSignUpRq;
   viewPassword: boolean = false;
+  viewPasswordC: boolean = false;
 
   @Output() closeSignUp = new EventEmitter<boolean>();
 
@@ -30,10 +50,14 @@ export class UsuarioSignupComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.maxLength(50)]],
-      password: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
-      confirmPassword: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(4)]]
-    });
+      email: ['', [Validators.required, Validators.maxLength(50), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
+      confirmPassword: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]]
+    },
+      {
+        validator: ConfirmPasswordValidator("password", "confirmPassword")
+      }
+    );
   }
 
   error = false;

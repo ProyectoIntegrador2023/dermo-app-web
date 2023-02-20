@@ -15,9 +15,13 @@
             <i class="icon-input fa-solid fa-envelope"></i>
             <input formControlName="email" placeholder="Correo electrónico" type="text" class="input">
           </div>
-          <div *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].errors"
-            class="message-error">
-            <div>Campo obligatorio o Correo inválido</div>
+          <div *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].errors?.required"
+          class="message-error">
+          <div>Campo obligatorio</div>
+          </div>
+        <div *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].errors?.pattern"
+          class="message-error">
+          <div>Formato de Email es inválido</div>
           </div>
         </div>
 
@@ -30,16 +34,43 @@
             <i *ngIf="viewPassword" class="icon-input-password fa-solid fa-eye-slash"
               (click)="changeType('passwordForm')"></i>
           </div>
-          <div *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors"
+          <div *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors?.required"
             class="message-error">
             <div>Campo obligatorio</div>
           </div>
+          <div *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].errors?.minlength" class="message-error">
+            <div>La contraseña debe tener minimo 5 caracteres</div>
+          </div>
         </div>
+
+        <div class="container-input-message">
+          <div class="container-input">
+            <i class="icon-input fa-solid fa-lock"></i>
+            <input id="confirmPassword" formControlName="confirmPassword" placeholder="Confirmar Contraseña" type="password" class="input">
+            <i *ngIf="!viewPasswordC" class="icon-input-password fa-solid fa-eye"
+              (click)="changeType('confirmPassword')"></i>
+            <i *ngIf="viewPasswordC" class="icon-input-password fa-solid fa-eye-slash"
+              (click)="changeType('confirmPassword')"></i>
+          </div>
+          <div *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.controls['confirmPassword'].errors?.required"
+            class="message-error">
+            <div>Campo obligatorio</div>
+          </div>
+          <div *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.controls['confirmPassword'].errors?.minlength"
+            class="message-error">
+            <div>La contraseña debe tener minimo 5 caracteres</div>
+          </div>
+          <div *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.controls['confirmPassword'].errors?.confirmPasswordValidator"
+            class="message-error">
+            <div>Las contraseñas no coinciden</div>
+          </div>
+        </div>
+
         <div class="">
           <button (click)="onSignUpUsuario()" [disabled]="signUpForm.invalid" type="button" class="btn btn-primary">Registrarse</button>
         </div>
         <div class="">
-          <p>¿Ya tienes cuenta? <a href="/login">Iniciar Sesión</a></p>
+          <p>¿Ya tienes cuenta? <a href="#">Iniciar Sesión</a></p>
         </div>
 
       </form>
