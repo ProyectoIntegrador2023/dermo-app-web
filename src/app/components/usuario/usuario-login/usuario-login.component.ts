@@ -8,8 +8,8 @@ import { UserSignInRq } from '../models/userSignIn.model';
 
 export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
-    let control = formGroup.controls[controlName];
-    let matchingControl = formGroup.controls[matchingControlName]
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName]
     if (
       matchingControl.errors &&
       !matchingControl.errors.confirmPasswordValidator

@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomeOutComponent {
 
-  login: boolean = false;
-  regis: boolean = false;
+  login = false;
+  regis = false;
 
   eventLogin(bol: boolean) {
     this.login = bol;

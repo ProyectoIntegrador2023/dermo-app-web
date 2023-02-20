@@ -12,7 +12,9 @@ export class HeaderComponent {
 
   title = 'Dermo App';
 
-  constructor() { }
+  constructor() {
+    // no es necesario llamar a super() aquí
+  }
 
   formRegis() {
     console.log('Estoy registrando')
