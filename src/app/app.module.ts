@@ -6,19 +6,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsuarioModule } from './usuario/usuario.module';
-import { AppHeaderModule } from './app-header/app-header.module';
+import { UsuarioModule } from './components/usuario/usuario.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeOutComponent } from './components/home-out/home-out.component';
+import { HeaderComponent } from './components/header/header.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeOutComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     UsuarioModule,
-    AppHeaderModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 7000,
       positionClass: 'toast-bottom-right',

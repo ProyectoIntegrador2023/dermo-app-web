@@ -4,6 +4,7 @@ export interface UserSignUpRq {
 }
 
 export interface UserSignUpRs {
+  createdAt: string,
   email: string,
   lastLoginAt: string,
   id: number
