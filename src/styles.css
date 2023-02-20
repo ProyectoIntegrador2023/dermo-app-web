@@ -1,174 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+@import "/src/assets/css/inputs.css";
+@import "/src/assets/css/button.css";
+@import "/src/assets/css/links.css";
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  background: url(./assets/img/background2.png) no-repeat center center fixed;
-  background-size: 1500px 600px;
+  background-size: 1500px 700px;
   height: 100vh;
 }
 
-a{
-    text-decoration: none;
-    color:  #4D94E1;
+* {
+  box-sizing: border-box;
 }
 
-.formulario{
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    background: white;
-    border-radius: 10px;
+a {
+  text-decoration: none;
+  color: #4d94e1;
 }
 
-.formulario h1{
-    text-align: center;
-    padding: 0 0 20px 0;
-    border-bottom: 1px solid silver;
+.separador {
+  border-style: solid;
+  color: darkgoldenrod;
+  border-style: 2px;
 }
 
-.formulario form{
-    padding: 0 40px;
-    box-sizing: border-box;
+.inicio {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: black;
 }
 
-form .username{
-    position: relative;
-    border-bottom: 2px solid #adadad;
-    margin: 30px 0;
+.inicio a {
+  color: blue;
+  text-decoration: none;
 }
 
-.username input{
-    width: 100%;
-    padding: 0 5px;
-    height: 40px;
-    font-size: 16 px;
-    border: none;
-    background: none;
-    outline: none;
+.inicio a:hover {
+  text-decoration: underline;
 }
 
-.username label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(20%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
+input[type="checkbox"] {
+  position: absolute;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  margin-left: -220px;
+  cursor: pointer;
+  width: 100%;
+  height: 15px;
+  border: 1px solid;
+  border-radius: 25px;
+  outline: none;
 }
 
-.username span::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #4D94E1;
-    transition: .5s;
+.brand img {
+  width: 60px;
+  height: 60px;
 }
 
-.username input:focus ~ label,
-.username input:focus ~ label{
-    top: -5px;
-    color: #4D94E1;
+.logo {
+  display: flex;
+  align-items: center;
 }
 
-.username input:focus ~ span::before,
-.username input:focus ~ span::before{
-    width: 100%;
+.logo img {
+  height: 50px;
+  margin-right: 10px;
 }
 
-button{
-    width: 100%;
-    height: 50px;
-    border: 1px solid;
-    background: #4D94E1;
-    border-radius: 25px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    outline: none;
-}
 
-button{
-    border-color: #042E5C;
-    transition: 5s;
-}
-
-.inicio{
-    margin: 30px 0;
-    text-align: center;
-    font-size: 16px;
-    color: black;
-}
-
-.inicio a{
-    color: blue;
-    text-decoration: none;
-}
-
-.inicio a:hover{
-    text-decoration: underline;
-}
-
-input[type="checkbox"]{
-    position: absolute;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    margin-left: -220px;
-    cursor: pointer;
-    width: 100%;
-    height: 15px;
-    border: 1px solid;
-    border-radius: 25px;
-    outline: none;
-}
-
-.brand img{
-    width: 60px;
-    height: 60px;
-}
-
-header{
-    display: flex;
-    min-height: 70px;
-    background-color: #ffffff;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-}
-
-.logo{
-    display: flex;
-    align-items: center;
-}
-
-.logo img{
-    height: 50px;
-    margin-right: 10px;
-}
-
-nav a{
-    font-weight: 600;
-    padding-right: 10px;
-}
-
-nav a:hover{
-    color: white;
-}
-
-@media (max-width:700px){
-    header{
-        flex-direction: column;
-    }
-    nav{
-        padding: 10px 10px;
-    }
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
   }
+  nav {
+    padding: 10px 10px;
+  }
+}
 
+.fondoApp {
+  margin: 0;
+  width: 100%;
+  height: 550px;
+  border-radius: 0px;
+  font-size: 18px;
+  position: absolute;
+  top: 10.3%;
+  padding: 1px 0px;
+}
+
+.pagePrincipal {
+  margin: 0;
+  position: absolute;
+  top: 41.75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1410px;
+  background: white;
+  border-radius: 10px;
+}
 

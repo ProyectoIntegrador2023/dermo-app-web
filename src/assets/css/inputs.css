@@ -1,0 +1,39 @@
+.container-input {
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.container-input-message {
+  margin-bottom: 15px;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0px 50px;
+  box-sizing: border-box;
+}
+
+.container-input .icon-input {
+  position: absolute;
+  display: flex;
+  width: 50px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.container-input .icon-input-password {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  width: 50px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
+}

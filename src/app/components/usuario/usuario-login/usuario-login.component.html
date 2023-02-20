@@ -1,0 +1,47 @@
+<div class="background">
+  <div class="formulario">
+      <div class="container-form">
+          <i class="icon-close fa-solid fa-circle-xmark" (click)="close()"></i>
+          <h1>Inicia Sesión</h1>
+          <form [formGroup]="loginForm">
+              <div *ngIf="error">
+                  <div class="alert alert-danger" role="alert">
+                      Usuario o contraseña incorrecto
+                  </div>
+              </div>
+              <div class="container-input-message">
+                  <div class="container-input">
+                      <i class="icon-input fa-solid fa-envelope"></i>
+                      <input formControlName="email" placeholder="Correo electrónico" type="text" class="input">
+                  </div>
+                  <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].errors"
+                      class="message-error">
+                      <div>Campo obligatorio o Correo invalido</div>
+                  </div>
+              </div>
+              <div class="container-input-message">
+                  <div class="container-input">
+                      <i class="icon-input fa-solid fa-lock"></i>
+                      <input id="passwordForm" formControlName="password" placeholder="Contraseña" type="password"
+                          class="input">
+                      <i *ngIf="!viewPassword" class="icon-input-password fa-solid fa-eye"
+                          (click)="changeType('passwordForm')"></i>
+                      <i *ngIf="viewPassword" class="icon-input-password fa-solid fa-eye-slash"
+                          (click)="changeType('passwordForm')"></i>
+                  </div>
+                  <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors"
+                      class="message-error">
+                      <div>Campo obligatorio</div>
+                  </div>
+              </div>
+
+              <div class="enviar">
+                  <button (click)="onLogInUsuario()" [disabled]="loginForm.invalid" type="button" class="btn btn-primary">Iniciar sesión</button>
+              </div>
+              <div class="inicio">
+                  <p>¿No tienes cuenta? <a href="/signup">Registrate</a></p>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
