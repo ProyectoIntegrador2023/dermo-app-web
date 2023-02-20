@@ -4,6 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { UsuarioLoginComponent } from './usuario-login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('UsuarioLoginComponent', () => {
   let component: UsuarioLoginComponent;
@@ -14,6 +15,7 @@ describe('UsuarioLoginComponent', () => {
       declarations: [ UsuarioLoginComponent],
       imports: [
         HttpClientTestingModule,
+        ReactiveFormsModule,
         ToastrModule.forRoot({
           timeOut: 7000,
           positionClass: 'toast-bottom-right',
