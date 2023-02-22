@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeOutComponent } from './components/home-out/home-out.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeInComponent } from './components/home-in/home-in.component';
+import { HeaderPrivadoComponent } from './components/header-privado/header-privado.component';
+import { SideBarNavegacionComponent } from './components/side-bar-navegacion/side-bar-navegacion.component';
+import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
+import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.component';
 
 
 @NgModule({
@@ -19,6 +23,10 @@ import { HomeInComponent } from './components/home-in/home-in.component';
     HomeOutComponent,
     HeaderComponent,
     HomeInComponent,
+    HeaderPrivadoComponent,
+    SideBarNavegacionComponent,
+    BienvenidoComponent,
+    CrearPerfilComponent,
   ],
   imports: [
     BrowserModule,
