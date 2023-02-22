@@ -15,6 +15,7 @@ import { HeaderPrivadoComponent } from './components/header-privado/header-priva
 import { SideBarNavegacionComponent } from './components/side-bar-navegacion/side-bar-navegacion.component';
 import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
 import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.component';
+import { CrearPerfilMedicoComponent } from './components/crear-perfil-medico/crear-perfil-medico.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.com
     SideBarNavegacionComponent,
     BienvenidoComponent,
     CrearPerfilComponent,
+    CrearPerfilMedicoComponent,
   ],
   imports: [
     BrowserModule,
