@@ -60,6 +60,7 @@ export class UsuarioLoginComponent implements OnInit {
   onLogInUsuario() {
     this.error = false
     this.loginDto = this.loginForm.value;
+      this.router.navigate(['/home-in'])
     this.usuarioService.userLogIn(this.loginDto)
       .subscribe(res => {
         console.log(res);
