@@ -1,8 +1,67 @@
 <app-header (openLogin)="eventLogin($event)" (openRegis)="eventRegis($event)"></app-header>
 
-<div class="home-out">
-    <img src="assets/img/banner.png" class="fondoApp" alt="fondo de aplicacion">
-</div>
+<main class="background">
+  <div class="grid align-items-center h-full">
+    <div class="col-4">
+      <div class="image-tratamiento pt-3">
+        <img src="assets/img/tratamiento.png" alt="">
+      </div>
+      <h2 class="text-tratamiento">
+        Visualiza tu agenda y selecciona los casos de tu especialidad
+      </h2>
+    </div>
+    <div class="col-8">
+      <div class="grid image-home">
+        <div class="col flex justify-content-center">
+          <img src="assets/img/cuaderno.png" alt="">
+        </div>
+        <div class="col flex justify-content-center">
+          <img src="assets/img/analisis.png" alt="">
+        </div>
+        <div class="col flex justify-content-around">
+          <img src="assets/img/archivo.png" alt="">
+        </div>
+      </div>
+      <div class="grid image-probar-ahora mt-4">
+        <div class="col flex justify-content-center">
+          <img src="assets/img/probar-ahora.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 <app-usuario-login (closeLogin)="eventLogin($event)" *ngIf="login"></app-usuario-login>
 <app-usuario-signup (closeSignUp)="eventRegis($event)" *ngIf="regis"></app-usuario-signup>
+
+<footer>
+  <div class="grid">
+    <div class="col">
+      <h2 class="text-footer">
+        Regístrate y comienza a realizar tele-consultas
+      </h2>
+    </div>
+    <div class="col flex align-items-center justify-content-around">
+      <div class="image-google-store">
+        <img src="assets/img/app-store-2.svg" alt="">
+      </div>
+      <div class="image-apple-store">
+        <img src="assets/img/appstore.svg" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col image-social-networks flex align-items-center">
+      <img src="assets/img/red1.svg" alt="">
+      <img src="assets/img/red2.svg" alt="" class="ml-2">
+      <img src="assets/img/red3.svg" alt="" class="ml-2">
+      <img src="assets/img/red4.svg" alt="" class="ml-2">
+    </div>
+    <div class="col image-logo-dermo flex justify-content-center align-items-center">
+      <img src="assets/img/dermoLogo.svg" alt="">
+    </div>
+    <div class="col image-dermo-rights flex justify-content-end align-items-center">
+      <img src="assets/img/dermo-rights.svg" alt="" class="dermo-rights">
+    </div>
+  </div>
+</footer>
