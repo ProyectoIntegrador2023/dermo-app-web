@@ -22,6 +22,10 @@ const routes: Routes = [
       {
         path: 'crear-perfil',
         component: CrearPerfilComponent
+      },
+      {
+        path: 'crear-perfil-medico',
+        component: CrearPerfilComponent
       }
     ]
   },
