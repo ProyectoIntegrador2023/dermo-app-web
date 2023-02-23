@@ -1,0 +1,39 @@
+nav {
+  background: #090d79;
+  background: linear-gradient(#4d94e1, #090d79);
+  height: 100%;
+  border-right: 3px solid #bf920a;
+}
+
+ul {
+  margin: 50px 0 0 0;
+  padding: 0;
+  border: 0;
+}
+
+li {
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+li img {
+  width: 100%;
+  max-width: 30px;
+}
+
+a {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  margin-left: 15px;
+}
+
+.image-side-bar {
+  padding-top: 60px;
+}
+
+.image-side-bar img {
+  width: 100%;
+  max-width: 100px;
+}
