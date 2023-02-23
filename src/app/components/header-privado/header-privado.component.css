@@ -1,0 +1,15 @@
+header {
+  border-bottom: 3px solid #bf920a;
+  padding: 10px 20px;
+  height: 65px;
+}
+
+h2 {
+  color: #042e5c;
+  text-align: center;
+}
+
+.image-profile img {
+  width: 100%;
+  max-width: 40px;
+}
