@@ -58,6 +58,9 @@ export class UsuarioLoginComponent implements OnInit {
   error = false
 
   onLogInUsuario() {
+    if(this.loginForm.invalid){
+      return;
+    }
     this.error = false
     this.loginDto = this.loginForm.value;
       this.router.navigate(['/home-in'])

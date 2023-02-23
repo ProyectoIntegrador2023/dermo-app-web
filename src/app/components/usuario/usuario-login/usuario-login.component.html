@@ -3,7 +3,7 @@
       <div class="container-form">
           <i class="icon-close fa-solid fa-circle-xmark" (click)="close()"></i>
           <h1>Inicia Sesión</h1>
-          <form [formGroup]="loginForm">
+          <form [formGroup]="loginForm" (keydown.enter)="onLogInUsuario()">
               <div *ngIf="error">
                   <div class="alert alert-danger" role="alert">
                       Usuario o contraseña incorrecto
