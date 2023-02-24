@@ -29,9 +29,9 @@ p {
   color: #096fdb;
 }
 
-.background{
+.background {
   padding: 25px;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 footer {
@@ -40,5 +40,5 @@ footer {
 footer img {
   width: 100%;
   max-width: 125px;
-  opacity: .8;
+  opacity: 0.8;
 }

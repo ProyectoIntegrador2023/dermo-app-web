@@ -1,1 +1,19 @@
-<p>crear-perfil works!</p>
+<p>Por favor diligencia los siguientes datos:</p>
+<form [formGroup]="formCrearPerfil" (ngSubmit)="guardar()">
+  <div class="wrapper-control">
+    <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre y Apellido">
+  </div>
+  <div class="wrapper-control">
+    <input id="edad" type="edad" formControlName="edad" placeholder="Edad">
+  </div>
+  <div class="wrapper-control">
+    <select id="pais" formControlName="pais" aria-placeholder="Pais">
+      <option value="1">Colombia</option>
+      <option value="2">Mexico</option>
+      <option value="3">Chile</option>
+    </select>
+  </div>
+  <div class="wrapper-control">
+    <input id="ciudad" type="ciudad" formControlName="ciudad" placeholder="Ciudad o municipio">
+  </div>
+</form>
