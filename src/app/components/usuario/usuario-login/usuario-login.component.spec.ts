@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 import { UsuarioLoginComponent } from './usuario-login.component';
 import { ReactiveFormsModule } from '@angular/forms';

@@ -34,8 +34,8 @@ export class UsuarioSignupComponent implements OnInit {
 
   helper = new JwtHelperService();
   signUpDto: UserSignUpRq;
-  viewPassword: boolean = false;
-  viewPasswordC: boolean = false;
+  viewPassword = false;
+  viewPasswordC = false;
 
   @Output() closeSignUp = new EventEmitter<boolean>();
 

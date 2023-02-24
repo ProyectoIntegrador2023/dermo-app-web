@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CrearPerfilComponent } from './crear-perfil.component';
 
@@ -8,7 +9,8 @@ describe('CrearPerfilComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrearPerfilComponent ]
+      declarations: [ CrearPerfilComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
 

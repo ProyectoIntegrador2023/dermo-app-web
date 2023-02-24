@@ -34,7 +34,7 @@ export class UsuarioLoginComponent implements OnInit {
 
   helper = new JwtHelperService();
   loginDto: UserSignInRq;
-  viewPassword: boolean = false;
+  viewPassword = false;
 
   @Output() closeLogin = new EventEmitter<boolean>();
 
