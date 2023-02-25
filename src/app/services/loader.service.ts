@@ -8,8 +8,6 @@ export class LoaderService {
 
   loader$ = new BehaviorSubject<boolean>(false);
 
-  constructor() { }
-
   show() {
     this.loader$.next(true);
   }
