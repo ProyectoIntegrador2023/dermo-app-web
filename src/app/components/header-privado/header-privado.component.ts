@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-privado.component.css']
 })
 export class HeaderPrivadoComponent {
+  mostrarMenu = false;
 
+  onUserIconClick() {
+    this.mostrarMenu = !this.mostrarMenu;}
+
+    crearPerfil() {
+      console.log('Crear perfil');
+    }
+
+    crearPerfilMedico() {
+      console.log('Crear perfil médico');
+    }
 }
+
