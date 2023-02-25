@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
-import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.component';
+import { CrearPerfilComponent } from './components/perfil/crear-perfil/crear-perfil.component';
 import { HomeInComponent } from './components/home-in/home-in.component';
 import { HomeOutComponent } from './components/home-out/home-out.component';
+
 
 const routes: Routes = [
   {
