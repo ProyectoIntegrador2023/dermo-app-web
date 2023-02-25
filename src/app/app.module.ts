@@ -14,8 +14,8 @@ import { HomeInComponent } from './components/home-in/home-in.component';
 import { HeaderPrivadoComponent } from './components/header-privado/header-privado.component';
 import { SideBarNavegacionComponent } from './components/side-bar-navegacion/side-bar-navegacion.component';
 import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
-import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.component';
-import { CrearPerfilMedicoComponent } from './components/crear-perfil-medico/crear-perfil-medico.component';
+import { PerfilModule } from './components/perfil/perfil.module';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -27,19 +27,19 @@ import { CrearPerfilMedicoComponent } from './components/crear-perfil-medico/cre
     HeaderPrivadoComponent,
     SideBarNavegacionComponent,
     BienvenidoComponent,
-    CrearPerfilComponent,
-    CrearPerfilMedicoComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     UsuarioModule,
+    PerfilModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 7000,
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
     BrowserAnimationsModule
