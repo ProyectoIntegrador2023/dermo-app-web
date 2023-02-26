@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar-navegacion',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-bar-navegacion.component.css']
 })
 export class SideBarNavegacionComponent {
-
+  constructor(private router: Router) {}
 }

@@ -38,4 +38,12 @@ describe('UsuarioSignupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit closeSignUp event when close() is called', () => {
+    const component = fixture.componentInstance;
+    spyOn(component.closeSignUp, 'emit');
+    component.close();
+    expect(component.closeSignUp.emit).toHaveBeenCalledWith(false);
+  });
+
 });
