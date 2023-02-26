@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from '../usuario.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { UserSignUpRq } from '../models/userSignUp.model';
+import { LoaderService } from 'src/app/services/loader.service';
 
 export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -41,6 +42,7 @@ export class UsuarioSignupComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
+    private loaderService: LoaderService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService
@@ -63,19 +65,23 @@ export class UsuarioSignupComponent implements OnInit {
   error = false;
 
   onSignUpUsuario() {
+    if (this.signUpForm.invalid) {
+      return;
+    }
     this.error = false
     this.signUpDto = this.signUpForm.value;
+    this.loaderService.show();
+    this.router.navigate(['/home-in'])
     this.usuarioService.userSignUp(this.signUpDto)
       .subscribe(res => {
         console.log(res)
         const token = res.lastLoginAt;
         sessionStorage.setItem('lastLoginAt', token);
-        this.router.navigate([`/signup`])
         this.showSuccess()
+        this.router.navigate([`/signup`])
       },
-
         error => {
-          this.showError(`Ha ocurrido un error: ${error.message}`);
+          console.error(error);
           this.error = true
         })
   }
@@ -85,7 +91,8 @@ export class UsuarioSignupComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success(`Se ha registrado exitosamente`, "Registro exitoso");
+    this.toastr.success(`Gracias por registrarte, ahora puedes disfrutar de tus servicios.`, "Registro exitoso");
+    this.loaderService.hide();
   }
 
   changeType(id: string) {

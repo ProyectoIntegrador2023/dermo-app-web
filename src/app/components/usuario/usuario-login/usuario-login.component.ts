@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserSignInRq } from '../models/userSignIn.model';
+import { LoaderService } from 'src/app/services/loader.service';
 
 export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -42,7 +43,8 @@ export class UsuarioLoginComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private loaderService: LoaderService
   ) { }
 
   loginForm: FormGroup;
@@ -58,19 +60,20 @@ export class UsuarioLoginComponent implements OnInit {
   error = false
 
   onLogInUsuario() {
-    if(this.loginForm.invalid){
+    if (this.loginForm.invalid) {
       return;
     }
     this.error = false
     this.loginDto = this.loginForm.value;
-      this.router.navigate(['/home-in'])
+    this.loaderService.show();
+    this.router.navigate(['/home-in'])
     this.usuarioService.userLogIn(this.loginDto)
       .subscribe(res => {
         console.log(res);
         const token = res.token;
         sessionStorage.setItem('token', token);
-        this.router.navigate(['/login']);
         this.showSuccess()
+        this.router.navigate(['/login']);
       },
         error => {
           console.error(error);
@@ -84,6 +87,7 @@ export class UsuarioLoginComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success(`Ha ingresado exitosamente`, "Inicio exitoso");
+    this.loaderService.hide();
   }
 
   changeType(id: string) {
@@ -94,5 +98,6 @@ export class UsuarioLoginComponent implements OnInit {
 
   close() {
     this.closeLogin.emit(false);
+
   }
 }
