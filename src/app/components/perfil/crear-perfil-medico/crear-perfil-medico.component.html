@@ -17,11 +17,11 @@
         placeholder="Identificación registro profesional">
     </div>
     <div class="wrapper-control">
-      <img src="assets/img/vigencia.svg" alt=""><input type="date" id="vigencia" formControlName="vigencia"
+      <input type="date" id="vigencia" formControlName="vigencia"
         placeholder="Vigencia">
     </div>
     <div class="wrapper-control">
-      <input type="file" class="form-control" id="imagen" (change)="onImageSelected($event)">
+      <input type="file" class="form-control" id="imagen" alife-file-to-base64 (change)="onImageSelected($event)">
     </div>
     <div class="flex justify-content-center">
       <button type="submit" class="btn btn-primary">Crear perfil médico</button>

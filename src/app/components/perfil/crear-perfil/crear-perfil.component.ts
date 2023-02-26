@@ -15,9 +15,7 @@ export class CrearPerfilComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private loaderService: LoaderService  ) {
-
-  }
+    private loaderService: LoaderService  ) {}
 
   ngOnInit(): void {
     this.formCrearPerfil = this.formBuilder.group({
