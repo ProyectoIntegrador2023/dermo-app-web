@@ -4,6 +4,7 @@ import { BienvenidoComponent } from './components/bienvenido/bienvenido.componen
 import { CrearPerfilComponent } from './components/perfil/crear-perfil/crear-perfil.component';
 import { HomeInComponent } from './components/home-in/home-in.component';
 import { HomeOutComponent } from './components/home-out/home-out.component';
+import { CrearPerfilMedicoComponent } from './components/perfil/crear-perfil-medico/crear-perfil-medico.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'crear-perfil-medico',
-        component: CrearPerfilComponent
+        component: CrearPerfilMedicoComponent
       }
     ]
   },
