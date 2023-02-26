@@ -1,1 +1,38 @@
-<p>crear-perfil-medico works!</p>
+<div class="wrapper">
+  <h2>Perfil médico:</h2>
+  <p>Por favor ingresa algunos detalles sobre tu especialidad, así podrás gestionar pacientes.</p>
+</div>
+<div class="wrapper">
+  <form [formGroup]="formCrearPerfilMedico" (ngSubmit)="guardarEspecialidad()" autocomplete="off">
+    <div class="wrapper-control">
+      <img src="assets/img/especialidad.svg" alt=""><select id="especialidad" formControlName="especialidad"
+        aria-placeholder="Especialidad">
+        <option value="1">Acné</option>
+        <option value="2">Alergias</option>
+        <option value="3">Quemaduras</option>
+      </select>
+    </div>
+    <div class="wrapper-control">
+      <img src="assets/img/licencia.svg" alt=""><input type="text" id="identificacion" formControlName="identificacion"
+        placeholder="Identificación registro profesional">
+    </div>
+    <div class="wrapper-control">
+      <img src="assets/img/vigencia.svg" alt=""><input type="date" id="vigencia" formControlName="vigencia"
+        placeholder="Vigencia">
+    </div>
+    <div class="wrapper-control">
+      <input type="file" class="form-control" id="imagen" (change)="onImageSelected($event)">
+    </div>
+    <div class="flex justify-content-center">
+      <button type="submit" class="btn btn-primary">Crear perfil médico</button>
+    </div>
+  </form>
+</div>
+
+<div class="background">
+  <footer class="wrapper flex justify-content-between">
+    <img src="assets/img/cuaderno.svg" alt="">
+    <img src="assets/img/analisis.svg" alt="">
+    <img src="assets/img/archivo.svg" alt="">
+  </footer>
+</div>
