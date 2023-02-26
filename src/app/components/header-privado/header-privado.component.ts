@@ -9,14 +9,15 @@ export class HeaderPrivadoComponent {
   mostrarMenu = false;
 
   onUserIconClick() {
-    this.mostrarMenu = !this.mostrarMenu;}
+    this.mostrarMenu = !this.mostrarMenu;
+  }
 
-    crearPerfil() {
-      console.log('Crear perfil');
-    }
+  crearPerfil() {
+    console.log('Crear perfil');
+  }
 
-    crearPerfilMedico() {
-      console.log('Crear perfil médico');
-    }
+  crearPerfilMedico() {
+    console.log('Crear perfil médico');
+  }
 }
 

@@ -9,16 +9,16 @@ describe('LoaderComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ],
-      imports: [ 
+      declarations: [LoaderComponent],
+      imports: [
         ToastrModule.forRoot({
           timeOut: 7000,
           positionClass: 'toast-bottom-right',
           preventDuplicates: true,
         }),
-      ]      
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LoaderComponent);
     component = fixture.componentInstance;
@@ -28,4 +28,5 @@ describe('LoaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

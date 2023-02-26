@@ -29,4 +29,20 @@ describe('HomeInComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain app-side-bar-navegacion', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('app-side-bar-navegacion')).toBeTruthy();
+  });
+
+  it('should contain app-header-privado', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('app-header-privado')).toBeTruthy();
+  });
+
+  it('should contain router-outlet', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
+  });
+
 });

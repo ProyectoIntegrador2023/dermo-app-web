@@ -1,4 +1,4 @@
-:host{
+:host {
   display: grid;
   height: 100%;
   grid-template-rows: auto 1fr auto;
@@ -14,67 +14,63 @@
   );
 }
 
-img{
+img {
   width: 100%;
   height: auto;
   max-width: 100%;
 }
 
-.image-home img{
+.image-home img {
   max-width: 185px;
 }
 
-.image-probar-ahora img{
+.image-probar-ahora img {
   max-width: 280px;
 }
 
-.image-tratamiento img{
+.image-tratamiento img {
   max-width: 150px;
 }
 
-.text-tratamiento{
+.text-tratamiento {
   font-size: 31px;
   color: white;
   font-weight: 700;
 }
 
-main, footer{
+main,
+footer {
   padding: 0 36px;
 }
 
-.text-footer{
+.text-footer {
   font-size: 32px;
-  color: #042E5C;
+  color: #042e5c;
   font-weight: 700;
   margin: 0;
 }
 
-footer{
+footer {
   margin-top: 25px;
 }
 
-.image-google-store img{
+.image-google-store img {
   width: 220px;
 }
 
-.image-apple-store img{
+.image-apple-store img {
   height: 64px;
   width: 220px;
 }
 
-.image-social-networks img{
+.image-social-networks img {
   max-width: 25px;
 }
 
-.image-logo-dermo img{
+.image-logo-dermo img {
   max-width: 150px;
 }
 
-.image-dermo-rights img{
+.image-dermo-rights img {
   max-width: 150px;
 }
-
-/* .dermo-rights{
-  display: inline-block;
-  transform: translateY(25%);
-} */
