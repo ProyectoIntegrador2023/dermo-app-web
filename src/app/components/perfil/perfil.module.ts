@@ -6,12 +6,15 @@ import { CrearPerfilMedicoComponent } from './crear-perfil-medico/crear-perfil-m
 
 
 @NgModule({
+  declarations: [
+    CrearPerfilComponent,
+    CrearPerfilMedicoComponent],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
-  declarations: [CrearPerfilComponent, CrearPerfilMedicoComponent],
-  exports: [CrearPerfilComponent, CrearPerfilMedicoComponent]
+    ReactiveFormsModule],
+  exports: [
+    CrearPerfilComponent,
+    CrearPerfilMedicoComponent]
 })
 export class PerfilModule { }

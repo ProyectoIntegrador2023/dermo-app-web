@@ -2,7 +2,7 @@
   <p>Por favor diligencia los siguientes datos:</p>
 </div>
 <div class="wrapper">
-  <form [formGroup]="formCrearPerfil" (ngSubmit)="guardar()" autocomplete="off">
+  <form [formGroup]="formCrearPerfil" (ngSubmit)="onCreatePerfil()" autocomplete="off">
     <div class="wrapper-control">
       <img src="assets/img/profile-icon.svg" alt=""><input id="nombre" type="text" formControlName="nombre" placeholder="Nombre y Apellido">
     </div>

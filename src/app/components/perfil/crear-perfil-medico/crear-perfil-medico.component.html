@@ -3,7 +3,7 @@
   <p>Por favor ingresa algunos detalles sobre tu especialidad, así podrás gestionar pacientes.</p>
 </div>
 <div class="wrapper">
-  <form [formGroup]="formCrearPerfilMedico" (ngSubmit)="guardarEspecialidad()" autocomplete="off">
+  <form [formGroup]="formCrearPerfilMedico" (ngSubmit)="onCreatePerfilDoctor()" autocomplete="off">
     <div class="wrapper-control">
       <img src="assets/img/especialidad.svg" alt=""><select id="especialidad" formControlName="especialidad"
         aria-placeholder="Especialidad">
