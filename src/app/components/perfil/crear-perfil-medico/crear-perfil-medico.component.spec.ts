@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -13,10 +14,11 @@ describe('CrearPerfilMedicoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CrearPerfilMedicoComponent ],
-      imports: [ 
+      imports: [
         RouterTestingModule,
         CommonModule,
         ReactiveFormsModule,
+        HttpClientModule,
         ToastrModule.forRoot({
           timeOut: 7000,
           positionClass: 'toast-bottom-right',
