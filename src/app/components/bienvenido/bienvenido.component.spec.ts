@@ -31,4 +31,7 @@ describe('BienvenidoComponent', () => {
     expect(options.length).toBe(3);
   });
 
+  it('should have the correct selector', () => {
+    expect(component.selector).toBe('app-bienvenido');
+  });
 });
