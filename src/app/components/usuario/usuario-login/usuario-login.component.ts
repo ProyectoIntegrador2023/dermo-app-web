@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { UsuarioService } from '../usuario.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserSignInRq } from '../models/userSignIn.model';
-import { LoaderService } from 'src/app/services/loader.service';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {UsuarioService} from '../usuario.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserSignInRq} from '../models/userSignIn.model';
+import {LoaderService} from 'src/app/services/loader.service';
+import {finalize} from "rxjs";
 
 export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -18,7 +19,7 @@ export function ConfirmPasswordValidator(controlName: string, matchingControlNam
       return;
     }
     if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ confirmPasswordValidator: true });
+      matchingControl.setErrors({confirmPasswordValidator: true});
     } else {
       matchingControl.setErrors(null);
     }
@@ -45,15 +46,16 @@ export class UsuarioLoginComponent implements OnInit {
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private loaderService: LoaderService
-  ) { }
+  ) {
+  }
 
   loginForm: FormGroup;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ['', Validators.required]
-    },
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+        password: ['', Validators.required]
+      },
     );
   }
 
@@ -66,19 +68,27 @@ export class UsuarioLoginComponent implements OnInit {
     this.error = false
     this.loginDto = this.loginForm.value;
     this.loaderService.show();
-    this.router.navigate(['/home-in'])
-    this.usuarioService.userLogIn(this.loginDto)
-      .subscribe(res => {
+    this.usuarioService.userLogIn(this.loginDto).pipe(
+      finalize(()=>{
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (res: any) => {
         console.log(res);
-        const token = res.token;
-        sessionStorage.setItem('token', token);
-        this.showSuccess()
-        this.router.navigate(['/login']);
+        if (res.statusCode === 404) {
+          this.error = true;
+          this.showError('error de acceso');
+        } else {
+          this.showSuccess();
+          this.router.navigate(['/home-in']);
+        }
       },
-        error => {
-          console.error(error);
-          this.error = true
-        })
+      error: (error) => {
+        console.error(error);
+        this.error = true;
+        this.showError('error de acceso');
+      }
+    })
   }
 
   showError(error: string) {
