@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, tap} from 'rxjs';
-import {authentication} from 'src/environments/environment';
+import {AUTH_ENDPOINT} from 'src/environments/environment';
 import {UserSignUpRq, UserSignUpRs} from './models/userSignUp.model';
 import {UserSignInRq, UserSignInRs} from './models/userSignIn.model';
 
@@ -15,7 +15,7 @@ export class UsuarioService {
 
   userLogIn(loginDto: UserSignInRq): Observable<UserSignInRs> {
     const userSignInRq: UserSignInRq = {"email": loginDto.email, "password": loginDto.password};
-    return this.http.post<UserSignInRs>(`${authentication.baseEndpoint}${authentication.loginPath}`, userSignInRq)
+    return this.http.post<UserSignInRs>(`${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.loginPath}`, userSignInRq)
       .pipe(
         tap((res) => {
           const token = res.token;
@@ -26,7 +26,7 @@ export class UsuarioService {
 
   userSignUp(signUpDto: UserSignUpRq): Observable<UserSignUpRs> {
     const userSignUpRq: UserSignUpRq = {"email": signUpDto.email, "password": signUpDto.password};
-    return this.http.post<UserSignUpRs>(`${authentication.baseEndpoint}${authentication.signupPath}`, userSignUpRq)
+    return this.http.post<UserSignUpRs>(`${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.signupPath}`, userSignUpRq)
       .pipe(
         tap((res) => {
           const token = res.lastLoginAt;
