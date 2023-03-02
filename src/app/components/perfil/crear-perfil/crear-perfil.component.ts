@@ -35,10 +35,10 @@ export class CrearPerfilComponent implements OnInit {
     this.loadCountries();
 
     this.formCrearPerfil = this.formBuilder.group({
-      nombre: [{ value: '', disabled: false }, [Validators.required, Validators.maxLength(10)]],
-      edad: [{ value: '', disabled: false }, [Validators.required, Validators.maxLength(2)]],
+      nombre: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
+      edad: [{ value: '', disabled: false }, [Validators.required, Validators.min(18), Validators.max(99)]],
       pais: [{ value: '', disabled: false }, [Validators.required]],
-      ciudad: [{ value: '', disabled: false }, [Validators.required, Validators.maxLength(10)]]
+      ciudad: [{ value: '', disabled: false }, [Validators.required]]
     })
   }
 
@@ -92,18 +92,19 @@ export class CrearPerfilComponent implements OnInit {
 
   loadCountries() {
     this.http.get('assets/cities/json_cities.json').subscribe(
-      (cities: any) => {
-        this.paises = cities.data;
-      }
-    )
+      (data: any) => {
+        this.paises = data.data;
+      });
   }
 
-  onChange(event: any) {
-    debugger
-    let idPais = event.target.value;
-    let pais = this.paises.find((pais)=>pais.id===idPais);
-    if (pais){
-      this.ciudades = pais.ciudades;
+  onChangePais(event: any) {
+    console.log('onChangePais', event)
+    console.log('onChangePais value ', event.target.value)
+    const idPais = event.target.value;
+    if (idPais){
+      const ciudades = this.paises.filter( (el: any) => el.id === idPais);
+      this.ciudades = ciudades[0].ciudades
+      console.log('onChangePais ciudades', this.ciudades)
     }
   }
 }

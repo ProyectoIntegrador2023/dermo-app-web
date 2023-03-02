@@ -11,7 +11,7 @@
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
-      <select id="pais" (change)="onChange($event)" formControlName="pais" >
+      <select id="pais" (change)="onChangePais($event)" formControlName="pais" >
         <option value="" disabled selected>País</option>
         <option *ngFor="let pais of paises" [value]="pais.id">{{pais.pais}}</option>
       </select>
@@ -24,7 +24,7 @@
       </select>
     </div>
     <div class="flex justify-content-center">
-    <button type="submit" name="submit" value="enviar">Confirmar cambios</button>
+    <button type="submit" name="submit" value="enviar" [disabled]="formCrearPerfil.invalid">Confirmar cambios</button>
   </div>
   </form>
 </div>

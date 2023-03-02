@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Component({
   selector: 'app-header-privado',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderPrivadoComponent {
   mostrarMenu = false;
+
+  constructor(private readonly usuarioService: UsuarioService) {}
 
   onUserIconClick() {
     this.mostrarMenu = !this.mostrarMenu;
@@ -18,6 +21,10 @@ export class HeaderPrivadoComponent {
 
   crearPerfilMedico() {
     console.log('Crear perfil médico');
+  }
+
+  finalizeSession() {
+    this.usuarioService.finalizeSession();
   }
 }
 
