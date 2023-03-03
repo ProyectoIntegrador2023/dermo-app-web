@@ -75,13 +75,10 @@ export class UsuarioLoginComponent implements OnInit {
     ).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.statusCode === 404) {
-          this.error = true;
-          this.showError('Usuario o contraseña inválidos');
-        } else {
-          this.showSuccess();
-          this.router.navigate(['/home-in']);
-        }
+        sessionStorage.setItem('token', res.token);
+        sessionStorage.setItem('email', res.email);
+        this.showSuccess();
+        this.router.navigate(['/home-in']);
       },
       error: (error) => {
         console.error(error);

@@ -11,7 +11,7 @@
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
-      <select id="country" (change)="onChange($event)" formControlName="country" >
+      <select id="pais" (change)="onChangePais($event)" formControlName="pais" >
         <option value="" disabled selected>País</option>
         <option *ngFor="let pais of paises" [value]="pais.id">{{pais.pais}}</option>
       </select>

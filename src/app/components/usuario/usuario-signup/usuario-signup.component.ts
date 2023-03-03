@@ -79,13 +79,9 @@ export class UsuarioSignupComponent implements OnInit {
     ).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.statusCode === 409) {
-          this.error = true;
-          this.showError('El usuario ya existe, inicia sesión');
-        } else {
-          this.showSuccess();
-          this.router.navigate(['/home-in']);
-        }
+        sessionStorage.setItem('lastLoginAt', res.lastLoginAt);
+        this.showSuccess();
+        this.router.navigate(['/home-in']);
       },
       error: (error) => {
         console.error(error);
