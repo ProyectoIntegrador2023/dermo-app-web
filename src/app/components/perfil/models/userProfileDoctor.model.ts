@@ -1,14 +1,16 @@
 export interface UserProfileDoctorRq {
-  especialidad: string,
-  identificacion: number,
-  vigencia: string,
-  licencia: string
+  specialty: string,
+  licenceId: number,
+  licenceValidityDate: string,
+  licenceImage: string
 }
 
 export interface UserProfileDoctorRs {
-  especialidad: string,
-  identificacion: number,
-  vigencia: string,
-  licencia: string,
-  token: string // revisar //
+  specialty: string,
+  licenceId: number,
+  licenceValidityDate: string,
+  licenceImage: string,
+  createdAt: string,
+  updatedAt: string,
+  token: string
 }

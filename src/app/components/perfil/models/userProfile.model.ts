@@ -1,14 +1,16 @@
 export interface UserProfileRq {
-  nombre: string,
-  edad: number,
-  pais: string,
-  ciudad: string
+  name: string,
+  age: number,
+  country: string,
+  city: string
 }
 
 export interface UserProfileRs {
-  nombre: string,
-  edad: number,
-  pais: string,
-  ciudad: string,
+  name: string,
+  age: number,
+  country: string,
+  city: string,
+  createdAt: string,
+  updatedAt: string,
   token: string
 }

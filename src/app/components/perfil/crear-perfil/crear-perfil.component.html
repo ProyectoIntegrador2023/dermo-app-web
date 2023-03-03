@@ -2,29 +2,29 @@
   <p>Por favor diligencia los siguientes datos:</p>
 </div>
 <div class="wrapper">
-  <form [formGroup]="formCrearPerfil" (ngSubmit)="guardar()" autocomplete="off">
+  <form [formGroup]="formCrearPerfil" (ngSubmit)="onCreatePerfil()" autocomplete="off">
     <div class="wrapper-control">
-      <img src="assets/img/profile-icon.svg" alt=""><input id="nombre" type="text" formControlName="nombre" placeholder="Nombre y Apellido">
+      <img src="assets/img/profile-icon.svg" alt=""><input id="nombre" type="text" formControlName="name" placeholder="Nombre y Apellido">
     </div>
     <div class="wrapper-control">
-      <img src="assets/img/edad.svg" alt=""><input id="edad" type="number" min="18" formControlName="edad" placeholder="Edad">
+      <img src="assets/img/edad.svg" alt=""><input id="edad" type="number" min="18" formControlName="age" placeholder="Edad">
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
-      <select id="pais" (change)="onChange($event)" formControlName="pais" >
+      <select id="country" (change)="onChange($event)" formControlName="country" >
         <option value="" disabled selected>País</option>
         <option *ngFor="let pais of paises" [value]="pais.id">{{pais.pais}}</option>
       </select>
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
-      <select id="ciudad" formControlName="ciudad">
+      <select id="ciudad" formControlName="city">
         <option value="" disabled selected>Ciudad o municipio</option>
         <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ciudad}}</option>
       </select>
     </div>
     <div class="flex justify-content-center">
-    <button type="submit" name="submit" value="enviar">Confirmar cambios</button>
+    <button type="submit" name="submit" value="enviar" [disabled]="formCrearPerfil.invalid">Confirmar cambios</button>
   </div>
   </form>
 </div>

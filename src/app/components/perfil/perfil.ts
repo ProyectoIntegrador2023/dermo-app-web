@@ -1,12 +1,12 @@
 export class Perfil {
   id:number;
-  especialidad: string;
+  specialty: string;
 
   constructor(
     id: number,
-    especialidad: string
+    specialty: string
   ){
     this.id = id;
-    this.especialidad = especialidad
+    this.specialty = specialty
   }
 }

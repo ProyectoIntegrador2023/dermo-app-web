@@ -79,9 +79,9 @@ export class UsuarioSignupComponent implements OnInit {
     ).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.statusCode === 404) {
+        if (res.statusCode === 409) {
           this.error = true;
-          this.showError('error de registro');
+          this.showError('El usuario ya existe, inicia sesión');
         } else {
           this.showSuccess();
           this.router.navigate(['/home-in']);
@@ -90,7 +90,7 @@ export class UsuarioSignupComponent implements OnInit {
       error: (error) => {
         console.error(error);
         this.error = true;
-        this.showError('error de registro');
+        this.showError('El usuario ya existe, inicia sesión.');
       }
     })
   }
@@ -107,7 +107,11 @@ export class UsuarioSignupComponent implements OnInit {
   changeType(id: string) {
     const type = document.getElementById(id)?.getAttribute('type') === 'password' ? 'text' : 'password';
     document.getElementById(id)?.setAttribute('type', type);
-    this.viewPassword = !this.viewPassword;
+    if (id==='passwordForm'){
+      this.viewPassword = !this.viewPassword;
+    } else {
+      this.viewPasswordC = !this.viewPasswordC;
+    }
   }
 
   close() {

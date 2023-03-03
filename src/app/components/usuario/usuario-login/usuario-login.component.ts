@@ -77,7 +77,7 @@ export class UsuarioLoginComponent implements OnInit {
         console.log(res);
         if (res.statusCode === 404) {
           this.error = true;
-          this.showError('error de acceso');
+          this.showError('Usuario o contraseña inválidos');
         } else {
           this.showSuccess();
           this.router.navigate(['/home-in']);
@@ -86,7 +86,7 @@ export class UsuarioLoginComponent implements OnInit {
       error: (error) => {
         console.error(error);
         this.error = true;
-        this.showError('error de acceso');
+        this.showError('Usuario o contraseña inválidos');
       }
     })
   }

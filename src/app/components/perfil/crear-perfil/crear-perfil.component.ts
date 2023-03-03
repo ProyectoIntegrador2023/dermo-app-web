@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { ToastrService } from 'ngx-toastr';
-import { LoaderService } from 'src/app/services/loader.service';
-import { UserProfileRq } from '../models/userProfile.model';
-import { PerfilService } from '../perfil.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {ToastrService} from 'ngx-toastr';
+import {LoaderService} from 'src/app/services/loader.service';
+import {UserProfileRq} from '../models/userProfile.model';
+import {PerfilService} from '../perfil.service';
 import {HttpClient} from "@angular/common/http";
-
+import {finalize} from 'rxjs';
 
 @Component({
   selector: 'app-crear-perfil',
@@ -18,7 +18,6 @@ export class CrearPerfilComponent implements OnInit {
 
   helper = new JwtHelperService();
   profileDto: UserProfileRq;
-
   formCrearPerfil!: FormGroup;
   ciudades: any[] = [];
   paises: any[] = [];
@@ -29,56 +28,54 @@ export class CrearPerfilComponent implements OnInit {
     private loaderService: LoaderService,
     private perfilService: PerfilService,
     private router: Router,
-    private http: HttpClient) {}
+    private http: HttpClient) {
+  }
 
   ngOnInit(): void {
     this.loadCountries();
 
     this.formCrearPerfil = this.formBuilder.group({
-      nombre: [{ value: '', disabled: false }, [Validators.required, Validators.maxLength(10)]],
-      edad: [{ value: '', disabled: false }, [Validators.required, Validators.maxLength(2)]],
-      pais: [{ value: '', disabled: false }, [Validators.required]],
-      ciudad: [{ value: '', disabled: false }, [Validators.required, Validators.maxLength(10)]]
+      name: [{value: '', disabled: false}, [Validators.required, Validators.maxLength(10)]],
+      age: [{value: '', disabled: false}, [Validators.required, Validators.maxLength(2)]],
+      country: [{value: '', disabled: false}, [Validators.required]],
+      city: [{value: '', disabled: false}, [Validators.required, Validators.maxLength(10)]]
     })
   }
 
-  error = false;
+  error = false
 
-  // onCreatePerfil() {
-  //   if (this.formCrearPerfil.invalid) {
-  //     return;
-  //   }
-  //   this.error = false
-  //   this.profileDto = this.formCrearPerfil.value;
-  //   this.loaderService.show();
-  //   this.router.navigate(['/home-in/crear-perfil'])
-  //   this.perfilService.userProfile(this.profileDto)
-  //     .subscribe(res => {
-  //       console.log(res)
-  //       const token = res.token;
-  //       sessionStorage.setItem('nombre', token);
-  //       this.showSuccess()
-  //       this.router.navigate([`/signup`])
-  //     },
-  //       error => {
-  //         console.error(error);
-  //         this.error = true
-  //       })
-  // }
-
-  guardar() {
-    console.log(this.formCrearPerfil);
-    console.log(this.formCrearPerfil.value);
-    console.log(this.formCrearPerfil.value.nombre);
-    console.log(this.formCrearPerfil.value.edad);
-    console.log(this.formCrearPerfil.value.pais);
-    console.log(this.formCrearPerfil.value.ciudad);
+  onCreatePerfil() {
+    if (this.formCrearPerfil.invalid) {
+      return;
+    }
+    this.error = false
+    this.profileDto = this.formCrearPerfil.value;
     this.loaderService.show();
-    setTimeout(
-      ()=>{
-          this.loaderService.hide();
-          this.toastr.success("perfil creado", "creacion perfil");
-      }, 3000);
+    this.perfilService.userProfile(this.profileDto).pipe(
+      finalize(() => {
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if (res.statusCode === 409) {
+          this.error = true;
+          this.showError(res.message);
+        } else {
+          this.showSuccess();
+          this.router.navigate([`/home-in`]);
+        }
+      },
+      error: (error) => {
+        console.error(error);
+        this.error = true;
+        this.showError('Usuario o contraseña inválidos');
+      }
+    })
+  }
+
+  showError(error: string) {
+    this.toastr.error(error, "Error")
   }
 
   showSuccess() {
@@ -99,12 +96,10 @@ export class CrearPerfilComponent implements OnInit {
   }
 
   onChange(event: any) {
-    debugger
     let idPais = event.target.value;
-    let pais = this.paises.find((pais)=>pais.id===idPais);
-    if (pais){
+    let pais = this.paises.find((pais) => pais.id === idPais);
+    if (pais) {
       this.ciudades = pais.ciudades;
     }
   }
 }
-
