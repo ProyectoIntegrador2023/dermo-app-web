@@ -5,41 +5,50 @@
 <div class="wrapper">
   <form [formGroup]="formCrearPerfilMedico" (ngSubmit)="onCreatePerfilDoctor()" autocomplete="off">
     <div class="wrapper-control">
-      <img src="assets/img/especialidad.svg" alt=""><select id="especialidad" formControlName="especialidad">
-        <option value="1">Acné</option>
-        <option value="2">Alergias</option>
-        <option value="3">Quemaduras</option>
+      <img src="assets/img/especialidad.svg" alt="">
+      <select id="specialty" formControlName="specialty">
+        <option [value]="'Acne'">Acné</option>
+        <option [value]="'Alergias'">Alergias</option>
+        <option [value]="'Quemaduras'">Quemaduras</option>
       </select>
     </div>
-    <div *ngIf="formCrearPerfilMedico.controls['especialidad'].touched && formCrearPerfilMedico.controls['especialidad'].errors"
-         class="message-error">
-      <div>Campo obligatorio o Correo invalido</div>
+    <div
+      *ngIf="formCrearPerfilMedico.controls['specialty'].touched && formCrearPerfilMedico.controls['specialty'].errors"
+      class="message-error">
+      <div>Campo obligatorio</div>
     </div>
     <div class="wrapper-control">
-      <img src="assets/img/licencia.svg" alt=""><input type="text" id="identificacion" formControlName="identificacion"
-        placeholder="Identificación registro profesional">
+      <img src="assets/img/licencia.svg" alt="">
+      <input type="text" id="licenceId" formControlName="licenceId"
+             placeholder="Identificación registro profesional">
     </div>
-    <div *ngIf="formCrearPerfilMedico.controls['identificacion'].touched && formCrearPerfilMedico.controls['identificacion'].errors"
-         class="message-error">
-      <div>Campo obligatorio o Correo invalido</div>
-    </div>
-    <div class="wrapper-control">
-      <input type="date" id="vigencia" formControlName="vigencia"
-        placeholder="Vigencia">
-    </div>
-    <div *ngIf="formCrearPerfilMedico.controls['vigencia'].touched && formCrearPerfilMedico.controls['vigencia'].errors"
-         class="message-error">
-      <div>Campo obligatorio o Correo invalido</div>
+    <div
+      *ngIf="formCrearPerfilMedico.controls['licenceId'].touched && formCrearPerfilMedico.controls['licenceId'].errors"
+      class="message-error">
+      <div>Campo obligatorio</div>
     </div>
     <div class="wrapper-control">
-      <input type="file" class="form-control" id="imagen" (change)="onImageSelected($event)">
+      <input type="date" id="licenceValidityDate" formControlName="licenceValidityDate"
+             placeholder="Vigencia">
     </div>
-    <div *ngIf="formCrearPerfilMedico.controls['imagen'].touched && formCrearPerfilMedico.controls['imagen'].errors"
-         class="message-error">
-      <div>Campo obligatorio o Correo invalido</div>
+    <div
+      *ngIf="formCrearPerfilMedico.controls['licenceValidityDate'].touched && formCrearPerfilMedico.controls['licenceValidityDate'].errors"
+      class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div class="wrapper-control">
+      <input type="file" class="form-control" id="licenceImage" (change)="onImageSelected($event)">
+    </div>
+    <div class="image-preview">
+      <img [src]="imagePreview" *ngIf="imagePreview">
+    </div>
+    <div *ngIf="!imageBase64" class="message-error">
+      <div>Campo obligatorio</div>
     </div>
     <div class="flex justify-content-center">
-      <button type="submit" class="btn btn-primary" [disabled]="formCrearPerfilMedico.invalid">Crear perfil médico</button>
+      <button type="submit" class="btn btn-primary" [disabled]="formCrearPerfilMedico.invalid || !imageBase64">Crear
+        perfil médico
+      </button>
     </div>
   </form>
 </div>

@@ -112,6 +112,16 @@ input[type="file"] {
   padding: 0 30px;
   color: white;
 }
+.image-preview{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.image-preview img {
+  max-width: 200px;
+  height: auto;
+}
 
 .background {
   padding: 25px;
@@ -126,7 +136,7 @@ footer img {
 
 button {
   width: 200px;
-  margin: 0;
+  margin: 20px 0;
   background-color: #096fdb;
   color: white;
   height: 30px;
@@ -136,4 +146,12 @@ button {
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }
