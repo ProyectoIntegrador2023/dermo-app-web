@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 
 import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { UsuarioSignupComponent } from '../usuario/usuario-signup/usuario-signup.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

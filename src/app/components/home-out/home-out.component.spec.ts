@@ -1,15 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from '../header/header.component';
-import { By } from '@angular/platform-browser';
 import { HomeOutComponent } from './home-out.component';
-import { DebugElement } from '@angular/core';
 
 
 describe('HomeOutComponent', () => {
   let component: HomeOutComponent;
   let fixture: ComponentFixture<HomeOutComponent>;
-  let loginButton: DebugElement;
-  let regisButton: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,8 +16,6 @@ describe('HomeOutComponent', () => {
     fixture = TestBed.createComponent(HomeOutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    loginButton = fixture.debugElement.query(By.css('#loginButton'));
-    regisButton = fixture.debugElement.query(By.css('#regisButton'));
   });
 
   it('should create', () => {

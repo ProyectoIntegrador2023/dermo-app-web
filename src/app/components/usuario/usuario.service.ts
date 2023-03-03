@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, tap} from 'rxjs';
+import {Observable} from 'rxjs';
 import {AUTH_ENDPOINT} from 'src/environments/environment';
 import {UserSignUpRq, UserSignUpRs} from './models/userSignUp.model';
 import {UserSignInRq, UserSignInRs} from './models/userSignIn.model';

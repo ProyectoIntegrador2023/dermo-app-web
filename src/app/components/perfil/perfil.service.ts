@@ -2,8 +2,8 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AUTH_ENDPOINT} from 'src/environments/environment';
-import {UserProfileRq, UserProfileRs} from './models/userProfile.model';
-import {UserProfileDoctorRq, UserProfileDoctorRs} from './models/userProfileDoctor.model';
+import {UserProfileRq} from './models/userProfile.model';
+import {UserProfileDoctorRq} from './models/userProfileDoctor.model';
 
 @Injectable({
   providedIn: 'root'

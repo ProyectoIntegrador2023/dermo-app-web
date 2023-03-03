@@ -53,7 +53,7 @@ export class CrearPerfilMedicoComponent implements OnInit {
   }
 
   getBase64(file: Blob, callback: (base64: any) => void) {
-    let fileReader = new FileReader();
+    const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = () => {
       callback(fileReader.result);
