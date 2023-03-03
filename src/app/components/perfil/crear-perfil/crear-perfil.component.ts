@@ -45,6 +45,7 @@ export class CrearPerfilComponent implements OnInit {
   error = false
 
   onCreatePerfil() {
+    console.log(this.formCrearPerfil);
     if (this.formCrearPerfil.invalid) {
       return;
     }
@@ -58,7 +59,7 @@ export class CrearPerfilComponent implements OnInit {
     ).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.statusCode === 409) {
+        if (res.body.statusCode >= 400) {
           this.error = true;
           this.showError(res.message);
         } else {
@@ -69,7 +70,7 @@ export class CrearPerfilComponent implements OnInit {
       error: (error) => {
         console.error(error);
         this.error = true;
-        this.showError('Usuario o contraseña inválidos');
+        this.showError(error.error.message);
       }
     })
   }
@@ -80,7 +81,6 @@ export class CrearPerfilComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success(`Tu perfil ha sido creado.`, "Creación Perfil");
-    this.loaderService.hide();
   }
 
   get formPerfil() {
@@ -97,9 +97,9 @@ export class CrearPerfilComponent implements OnInit {
   onChangePais(event: any) {
     console.log('onChangePais', event)
     console.log('onChangePais value ', event.target.value)
-    const idPais = event.target.value;
-    if (idPais){
-      const ciudades = this.paises.filter( (el: any) => el.id === idPais);
+    const pais = event.target.value;
+    if (pais){
+      const ciudades = this.paises.filter( (el: any) => el.pais === pais);
       this.ciudades = ciudades[0].ciudades
       console.log('onChangePais ciudades', this.ciudades)
     }

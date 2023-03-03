@@ -29,7 +29,10 @@ div.wrapper {
 .wrapper-control {
   max-width: 700px;
   position: relative;
-  margin: 0 auto 20px auto;
+}
+
+.wrapper-control~.wrapper-control{
+  margin: 20px auto 0 auto;
 }
 
 .wrapper-control img{
@@ -47,7 +50,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=text],input[type=number]{
+input[type=text],input[type=number],input[type=email]{
   width: 100%;
   height: 33px;
   background-color: #9aabbe;
@@ -81,8 +84,8 @@ footer img {
 }
 
 button {
+  margin: 20px 0 20px 0;
   width: 200px;
-  margin: 0;
   background-color: #096fdb;
   color: white;
   height: 30px;

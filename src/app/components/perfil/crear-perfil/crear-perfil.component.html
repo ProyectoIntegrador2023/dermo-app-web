@@ -4,17 +4,49 @@
 <div class="wrapper">
   <form [formGroup]="formCrearPerfil" (ngSubmit)="onCreatePerfil()" autocomplete="off">
     <div class="wrapper-control">
-      <img src="assets/img/profile-icon.svg" alt=""><input id="nombre" type="text" formControlName="name" placeholder="Nombre y Apellido">
+      <img src="assets/img/profile-icon.svg" alt="">
+      <input id="nombre" type="text" formControlName="name" maxlength="100" minlength="4"
+             placeholder="Nombre y Apellido">
+    </div>
+    <div *ngIf="formCrearPerfil.controls['name'].touched && formCrearPerfil.controls['name'].errors?.required"
+         class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div *ngIf="formCrearPerfil.controls['name'].touched && formCrearPerfil.controls['name'].errors?.minlength"
+         class="message-error">
+      <div>Mínimo 4 caracteres</div>
+    </div>
+    <div *ngIf="formCrearPerfil.controls['name'].touched && formCrearPerfil.controls['name'].errors?.maxlength"
+         class="message-error">
+      <div>Máximo 100 caracteres</div>
     </div>
     <div class="wrapper-control">
-      <img src="assets/img/edad.svg" alt=""><input id="edad" type="number" min="18" formControlName="age" placeholder="Edad">
+      <img src="assets/img/edad.svg" alt="">
+      <input id="edad" type="number" min="18" max="99" formControlName="age"
+             placeholder="Edad">
+    </div>
+    <div *ngIf="formCrearPerfil.controls['age'].touched && formCrearPerfil.controls['age'].errors?.required"
+         class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div *ngIf="formCrearPerfil.controls['age'].touched && formCrearPerfil.controls['age'].errors?.min"
+         class="message-error">
+      <div>Edad mínima 18 años</div>
+    </div>
+    <div *ngIf="formCrearPerfil.controls['age'].touched && formCrearPerfil.controls['age'].errors?.max"
+         class="message-error">
+      <div>Edad máxima 18 años</div>
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
-      <select id="pais" (change)="onChangePais($event)" formControlName="pais" >
+      <select id="pais" (change)="onChangePais($event)" formControlName="country">
         <option value="" disabled selected>País</option>
-        <option *ngFor="let pais of paises" [value]="pais.id">{{pais.pais}}</option>
+        <option *ngFor="let pais of paises" [value]="pais.pais">{{pais.pais}}</option>
       </select>
+    </div>
+    <div *ngIf="formCrearPerfil.controls['country'].touched && formCrearPerfil.controls['country'].errors?.required"
+         class="message-error">
+      <div>Campo obligatorio</div>
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
@@ -23,9 +55,13 @@
         <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ciudad}}</option>
       </select>
     </div>
+    <div *ngIf="formCrearPerfil.controls['city'].touched && formCrearPerfil.controls['city'].errors?.required"
+         class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
     <div class="flex justify-content-center">
-    <button type="submit" name="submit" value="enviar" [disabled]="formCrearPerfil.invalid">Confirmar cambios</button>
-  </div>
+      <button type="submit" name="submit" value="enviar" [disabled]="formCrearPerfil.invalid">Confirmar cambios</button>
+    </div>
   </form>
 </div>
 
