@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderPrivadoComponent } from './header-privado.component';
@@ -8,7 +9,8 @@ describe('HeaderPrivadoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderPrivadoComponent]
+      declarations: [HeaderPrivadoComponent],
+      imports: [HttpClientModule]
     })
       .compileComponents();
 
