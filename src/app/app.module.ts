@@ -16,6 +16,7 @@ import { SideBarNavegacionComponent } from './components/side-bar-navegacion/sid
 import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
 import { PerfilModule } from './components/perfil/perfil.module';
 import { LoaderComponent } from './components/loader/loader.component';
+import { GenerarDiagnosticoComponent } from './components/generar-diagnostico/generar-diagnostico.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     HeaderPrivadoComponent,
     SideBarNavegacionComponent,
     BienvenidoComponent,
-    LoaderComponent
+    LoaderComponent,
+    GenerarDiagnosticoComponent
   ],
   imports: [
     BrowserModule,
