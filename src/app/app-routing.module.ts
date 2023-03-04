@@ -5,6 +5,7 @@ import { CrearPerfilComponent } from './components/perfil/crear-perfil/crear-per
 import { HomeInComponent } from './components/home-in/home-in.component';
 import { HomeOutComponent } from './components/home-out/home-out.component';
 import { CrearPerfilMedicoComponent } from './components/perfil/crear-perfil-medico/crear-perfil-medico.component';
+import { GenerarDiagnosticoComponent } from './components/generar-diagnostico/generar-diagnostico.component';
 
 
 const routes: Routes = [
@@ -28,10 +29,13 @@ const routes: Routes = [
       {
         path: 'crear-perfil-medico',
         component: CrearPerfilMedicoComponent
+      },
+      {
+        path: 'generar-diagnostico',
+        component: GenerarDiagnosticoComponent
       }
     ]
   },
-
 ]
 
 @NgModule({
