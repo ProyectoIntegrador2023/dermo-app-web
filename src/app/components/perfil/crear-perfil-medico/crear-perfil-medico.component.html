@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <h2>Perfil médico:</h2>
+  <p>Por favor ingresa algunos detalles sobre tu especialidad, así podrás gestionar pacientes.</p>
+</div>
+<div class="wrapper">
+  <form [formGroup]="formCrearPerfilMedico" (ngSubmit)="onCreatePerfilDoctor()" autocomplete="off">
+    <div class="wrapper-control">
+      <img src="assets/img/especialidad.svg" alt="">
+      <select id="specialty" formControlName="specialty">
+        <option [value]="'Acne'">Acné</option>
+        <option [value]="'Alergias'">Alergias</option>
+        <option [value]="'Quemaduras'">Quemaduras</option>
+      </select>
+    </div>
+    <div
+      *ngIf="formCrearPerfilMedico.controls['specialty'].touched && formCrearPerfilMedico.controls['specialty'].errors"
+      class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div class="wrapper-control">
+      <img src="assets/img/licencia.svg" alt="">
+      <input type="text" id="licenceId" formControlName="licenceId"
+             placeholder="Identificación registro profesional">
+    </div>
+    <div
+      *ngIf="formCrearPerfilMedico.controls['licenceId'].touched && formCrearPerfilMedico.controls['licenceId'].errors"
+      class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div class="wrapper-control">
+      <input type="date" id="licenceValidityDate" formControlName="licenceValidityDate"
+             placeholder="Vigencia">
+    </div>
+    <div
+      *ngIf="formCrearPerfilMedico.controls['licenceValidityDate'].touched && formCrearPerfilMedico.controls['licenceValidityDate'].errors"
+      class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div class="wrapper-control">
+      <input type="file" class="form-control" id="licenceImage" (change)="onImageSelected($event)">
+    </div>
+    <div class="image-preview">
+      <img [src]="imagePreview" *ngIf="imagePreview">
+    </div>
+    <div *ngIf="!imageBase64" class="message-error">
+      <div>Campo obligatorio</div>
+    </div>
+    <div class="flex justify-content-center">
+      <button type="submit" class="btn btn-primary" [disabled]="formCrearPerfilMedico.invalid || !imageBase64">Crear
+        perfil médico
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="background">
+  <footer class="wrapper flex justify-content-between">
+    <img src="assets/img/cuaderno.svg" alt="">
+    <img src="assets/img/analisis.svg" alt="">
+    <img src="assets/img/archivo.svg" alt="">
+  </footer>
+</div>

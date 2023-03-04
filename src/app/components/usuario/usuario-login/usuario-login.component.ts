@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { UsuarioService } from '../usuario.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserSignInRq } from '../models/userSignIn.model';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {UsuarioService} from '../usuario.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserSignInRq} from '../models/userSignIn.model';
+import {LoaderService} from 'src/app/services/loader.service';
+import {finalize} from "rxjs";
 
 export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -17,7 +19,7 @@ export function ConfirmPasswordValidator(controlName: string, matchingControlNam
       return;
     }
     if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ confirmPasswordValidator: true });
+      matchingControl.setErrors({confirmPasswordValidator: true});
     } else {
       matchingControl.setErrors(null);
     }
@@ -34,7 +36,7 @@ export class UsuarioLoginComponent implements OnInit {
 
   helper = new JwtHelperService();
   loginDto: UserSignInRq;
-  viewPassword: boolean = false;
+  viewPassword = false;
 
   @Output() closeLogin = new EventEmitter<boolean>();
 
@@ -42,36 +44,48 @@ export class UsuarioLoginComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private loaderService: LoaderService
+  ) {
+  }
 
   loginForm: FormGroup;
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ['', Validators.required]
-    },
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+        password: ['', Validators.required]
+      },
     );
   }
 
   error = false
 
   onLogInUsuario() {
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.error = false
     this.loginDto = this.loginForm.value;
-    this.usuarioService.userLogIn(this.loginDto)
-      .subscribe(res => {
+    this.loaderService.show();
+    this.usuarioService.userLogIn(this.loginDto).pipe(
+      finalize(()=>{
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (res: any) => {
         console.log(res);
-        const token = res.token;
-        sessionStorage.setItem('token', token);
-        this.router.navigate(['/login']);
-        this.showSuccess()
+        sessionStorage.setItem('token', res.token);
+        sessionStorage.setItem('email', res.email);
+        this.showSuccess();
+        this.router.navigate(['/home-in']);
       },
-        error => {
-          console.error(error);
-          this.error = true
-        })
+      error: (error) => {
+        console.error(error);
+        this.error = true;
+        this.showError('Usuario o contraseña inválidos');
+      }
+    })
   }
 
   showError(error: string) {
@@ -80,6 +94,7 @@ export class UsuarioLoginComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success(`Ha ingresado exitosamente`, "Inicio exitoso");
+    this.loaderService.hide();
   }
 
   changeType(id: string) {
@@ -90,5 +105,6 @@ export class UsuarioLoginComponent implements OnInit {
 
   close() {
     this.closeLogin.emit(false);
+
   }
 }

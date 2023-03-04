@@ -3,7 +3,7 @@
     <div class="container-form">
       <i class="icon-close fa-solid fa-circle-xmark" (click)="close()"></i>
       <h1>Resgistrarse</h1>
-      <form [formGroup]="signUpForm">
+      <form [formGroup]="signUpForm" (keydown.enter)="onSignUpUsuario()">
         <div *ngIf="error">
           <div class="alert alert-danger" role="alert">
             Usuario o contraseña incorrectos

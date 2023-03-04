@@ -1,12 +1,12 @@
 <nav class="navbar">
   <a href="" class="logo">
-    <img src="assets/img/peeling.png" alt="logo de la compañia" class="logo-img">
+    <img src="assets/img/peeling.svg" alt="logo de la compañia" class="logo-img">
     <div class="content" role="main">
       <h2 class="logo-nombre">{{ title }}</h2>
     </div>
   </a>
-  <nav>
-    <a (click)="formRegis()" class="links links-primary">Registrarse</a>
-    <a (click)="formLogin()" class="links links-primary">Iniciar sesión</a>
+  <nav class="container-links">
+    <a (click)="formLogin()" class="links links-primary login">Iniciar sesión</a>
+    <a (click)="formRegis()" class="links links-primary sign-up">Registrarse</a>
   </nav>
 </nav>
