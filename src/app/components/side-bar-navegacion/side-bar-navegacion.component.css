@@ -11,9 +11,15 @@ ul {
   border: 0;
 }
 
+li:hover {
+  background-color: #042E5C;
+}
+
+
 li {
   margin-bottom: 15px;
   padding-left: 10px;
+  height: 50px;
 }
 
 li img {
