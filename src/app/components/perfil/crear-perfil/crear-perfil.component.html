@@ -10,15 +10,15 @@
     </div>
     <div *ngIf="formCrearPerfil.controls['name'].touched && formCrearPerfil.controls['name'].errors?.required"
          class="message-error">
-      <div>Campo obligatorio</div>
+      <div class="message-error">Campo obligatorio</div>
     </div>
     <div *ngIf="formCrearPerfil.controls['name'].touched && formCrearPerfil.controls['name'].errors?.minlength"
          class="message-error">
-      <div>Mínimo 4 caracteres</div>
+      <div class="message-error">Mínimo 4 caracteres</div>
     </div>
     <div *ngIf="formCrearPerfil.controls['name'].touched && formCrearPerfil.controls['name'].errors?.maxlength"
          class="message-error">
-      <div>Máximo 100 caracteres</div>
+      <div class="message-error">Máximo 100 caracteres</div>
     </div>
     <div class="wrapper-control">
       <img src="assets/img/edad.svg" alt="">
@@ -27,15 +27,15 @@
     </div>
     <div *ngIf="formCrearPerfil.controls['age'].touched && formCrearPerfil.controls['age'].errors?.required"
          class="message-error">
-      <div>Campo obligatorio</div>
+      <div class="message-error">Campo obligatorio</div>
     </div>
     <div *ngIf="formCrearPerfil.controls['age'].touched && formCrearPerfil.controls['age'].errors?.min"
          class="message-error">
-      <div>Edad mínima 18 años</div>
+      <div class="message-error">Edad mínima 18 años</div>
     </div>
     <div *ngIf="formCrearPerfil.controls['age'].touched && formCrearPerfil.controls['age'].errors?.max"
          class="message-error">
-      <div>Edad máxima 18 años</div>
+      <div class="message-error">Edad máxima 18 años</div>
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
@@ -46,7 +46,7 @@
     </div>
     <div *ngIf="formCrearPerfil.controls['country'].touched && formCrearPerfil.controls['country'].errors?.required"
          class="message-error">
-      <div>Campo obligatorio</div>
+      <div class="message-error">Campo obligatorio</div>
     </div>
     <div class="wrapper-control">
       <img src="assets/img/ubicacion.svg" alt="">
@@ -57,7 +57,7 @@
     </div>
     <div *ngIf="formCrearPerfil.controls['city'].touched && formCrearPerfil.controls['city'].errors?.required"
          class="message-error">
-      <div>Campo obligatorio</div>
+      <div class="message-error">Campo obligatorio</div>
     </div>
     <div class="flex justify-content-center">
       <button type="submit" name="submit" value="enviar" [disabled]="formCrearPerfil.invalid">Confirmar cambios</button>

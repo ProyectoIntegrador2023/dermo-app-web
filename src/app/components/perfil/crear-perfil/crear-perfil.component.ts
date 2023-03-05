@@ -21,6 +21,8 @@ export class CrearPerfilComponent implements OnInit {
   formCrearPerfil!: FormGroup;
   ciudades: any[] = [];
   paises: any[] = [];
+  error = false
+  personalProfileAlreadyExist = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,16 +35,14 @@ export class CrearPerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCountries();
-
     this.formCrearPerfil = this.formBuilder.group({
       name: [{ value: '', disabled: false }, [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
       age: [{ value: '', disabled: false }, [Validators.required, Validators.min(18), Validators.max(99)]],
       country: [{ value: '', disabled: false }, [Validators.required]],
       city: [{ value: '', disabled: false }, [Validators.required]]
-    })
+    });
+    this.getPersonalPerfil();
   }
-
-  error = false
 
   onCreatePerfil() {
     console.log(this.formCrearPerfil);
@@ -52,7 +52,7 @@ export class CrearPerfilComponent implements OnInit {
     this.error = false
     this.profileDto = this.formCrearPerfil.value;
     this.loaderService.show();
-    this.perfilService.userProfile(this.profileDto).pipe(
+    this.perfilService.userProfile(this.profileDto, this.personalProfileAlreadyExist).pipe(
       finalize(() => {
         this.loaderService.hide();
       })
@@ -63,7 +63,7 @@ export class CrearPerfilComponent implements OnInit {
           this.error = true;
           this.showError(res.message);
         } else {
-          this.showSuccess();
+          this.showSuccess(this.personalProfileAlreadyExist);
           this.router.navigate([`/home-in`]);
         }
       },
@@ -75,12 +75,39 @@ export class CrearPerfilComponent implements OnInit {
     })
   }
 
+  getPersonalPerfil() {
+    this.error = false
+    this.loaderService.show();
+    this.perfilService.getUserProfile().pipe(
+      finalize(() => {
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.personalProfileAlreadyExist = true;
+        this.formCrearPerfil.controls['name'].patchValue(res.body.name);
+        this.formCrearPerfil.controls['age']?.patchValue(res.body.age);
+        if(res.body.country) {
+          this.formCrearPerfil.controls['country']?.patchValue(res.body.country);
+          const ciudades = this.paises.filter( (el: any) => el.pais === res.body.country);
+          this.ciudades = ciudades[0].ciudades
+          this.formCrearPerfil.controls['city']?.patchValue(res.body.city);
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
+  }
+
   showError(error: string) {
     this.toastr.error(error, "Error")
   }
 
-  showSuccess() {
-    this.toastr.success(`Tu perfil ha sido creado.`, "Creación Perfil");
+  showSuccess(isUpdated: boolean) {
+    const message = (isUpdated) ? 'actualizado' : 'creado';
+    this.toastr.success(`Tu perfil ha sido ${message}.`, "Perfil");
   }
 
   get formPerfil() {
@@ -95,13 +122,10 @@ export class CrearPerfilComponent implements OnInit {
   }
 
   onChangePais(event: any) {
-    console.log('onChangePais', event)
-    console.log('onChangePais value ', event.target.value)
     const pais = event.target.value;
     if (pais){
       const ciudades = this.paises.filter( (el: any) => el.pais === pais);
       this.ciudades = ciudades[0].ciudades
-      console.log('onChangePais ciudades', this.ciudades)
     }
   }
 }

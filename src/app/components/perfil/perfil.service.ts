@@ -12,7 +12,16 @@ export class PerfilService {
   constructor(private http: HttpClient) {
   }
 
-  userProfile(profileDto: UserProfileRq): Observable<any> {
+  getUserProfile(): Observable<any> {
+    const medicEmail = sessionStorage.getItem('email');
+    return this.http.get<any>(`${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.profilePersonalPath}/${medicEmail}`,
+      {
+        observe: 'response'
+      }
+    )
+  }
+
+  userProfile(profileDto: UserProfileRq, isUpdate: boolean): Observable<any> {
     const userProfileRq: UserProfileRq = {
       name: profileDto.name,
       age: profileDto.age,
@@ -20,12 +29,25 @@ export class PerfilService {
       city: profileDto.city,
       email: sessionStorage.getItem('email') as string
     };
-    return this.http.post<any>(`${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.profilePersonalPath}`,
-      userProfileRq,
+    const endpoint = `${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.profilePersonalPath}`;
+
+    return (isUpdate) ? this.userProfilePut(endpoint, userProfileRq) : this.userProfilePost(endpoint, userProfileRq);
+  }
+
+  private userProfilePost(endpoint: string, userProfileRq: UserProfileRq) {
+    return this.http.post<any>(endpoint, userProfileRq,
       {
         observe: 'response'
       }
-    )
+    );
+  }
+
+  private userProfilePut(endpoint: string, userProfileRq: UserProfileRq) {
+    return this.http.put<any>(endpoint, userProfileRq,
+      {
+        observe: 'response'
+      }
+    );
   }
 
   userProfileDoctor(profileDoctorDto: UserProfileDoctorRq): Observable<any> {
