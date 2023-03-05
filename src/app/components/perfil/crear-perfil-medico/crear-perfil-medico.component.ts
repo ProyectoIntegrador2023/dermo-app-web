@@ -39,21 +39,6 @@ export class CrearPerfilMedicoComponent implements OnInit {
       licenceImage: [{value: '', disabled: false}, []],
     });
     this.getMedicProfile();
-
-    this.formCrearPerfilMedico.valueChanges.subscribe(value => {
-      console.log(value);
-      console.log(this.formCrearPerfilMedico.errors);
-      console.log(this.formCrearPerfilMedico.valid);
-      console.log(this.formCrearPerfilMedico.status);
-      Object.keys(this.formCrearPerfilMedico.controls).forEach(key => {
-        const controlErrors = this.formCrearPerfilMedico.controls[key].errors;
-        if (controlErrors != null) {
-          Object.keys(controlErrors).forEach(keyError => {
-           console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
-          });
-        }
-      });
-    });
   }
 
 
@@ -65,6 +50,8 @@ export class CrearPerfilMedicoComponent implements OnInit {
       this.getBase64(file, (base64: any) => {
         this.imageBase64 = base64.split(',').pop();
         this.imagePreview = base64;
+        console.log('onImageSelected imageBase64 ', this.imageBase64);
+        console.log('onImageSelected imagePreview ', this.imagePreview);
       })
     }
   }
@@ -123,7 +110,9 @@ export class CrearPerfilMedicoComponent implements OnInit {
         this.formCrearPerfilMedico.controls['specialty'].patchValue(res.body.specialty);
         this.formCrearPerfilMedico.controls['licenceId']?.patchValue(res.body.licenceId);
         this.formCrearPerfilMedico.controls['licenceValidityDate']?.patchValue(res.body.licenceValidityDate);
-        this.formCrearPerfilMedico.controls['licenceImage']?.patchValue(res.body.licenceImage);
+        console.log('licenceImage.data ', res.body.licenceImage);
+        this.imageBase64 = res.body.licenceImage;
+        this.imagePreview = 'data:image/png;base64,'+res.body.licenceImage;
       },
       error: (error) => {
         console.error(error);
