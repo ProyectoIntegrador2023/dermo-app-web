@@ -37,7 +37,7 @@
       <div>Campo obligatorio</div>
     </div>
     <div class="wrapper-control">
-      <input type="file" class="form-control" id="licenceImage" (change)="onImageSelected($event)">
+      <input type="file" class="form-control" id="licenceImage" formControlName="licenceImage" (change)="onImageSelected($event)">
     </div>
     <div class="image-preview">
       <img [src]="imagePreview" *ngIf="imagePreview">
@@ -46,7 +46,7 @@
       <div>Campo obligatorio</div>
     </div>
     <div class="flex justify-content-center">
-      <button type="submit" class="btn btn-primary" [disabled]="formCrearPerfilMedico.invalid || !imageBase64">Crear
+      <button type="submit" class="btn btn-primary" [disabled]="formCrearPerfilMedico.invalid">Crear
         perfil médico
       </button>
     </div>

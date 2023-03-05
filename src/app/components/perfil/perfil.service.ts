@@ -50,7 +50,16 @@ export class PerfilService {
     );
   }
 
-  userProfileDoctor(profileDoctorDto: UserProfileDoctorRq): Observable<any> {
+  getProfileDoctor(): Observable<any> {
+    const medicEmail = sessionStorage.getItem('email');
+    return this.http.get<any>(`${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.profileMedicPath}/${medicEmail}`,
+      {
+        observe: 'response'
+      }
+    )
+  }
+
+  userProfileDoctor(profileDoctorDto: UserProfileDoctorRq, isUpdate: boolean): Observable<any> {
     const userProfileDoctorRq: UserProfileDoctorRq = {
       specialty: profileDoctorDto.specialty,
       licenceId: profileDoctorDto.licenceId,
@@ -58,11 +67,25 @@ export class PerfilService {
       licenceImage: profileDoctorDto.licenceImage,
       email: sessionStorage.getItem('email') as string
     };
-    return this.http.post<any>(`${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.profileMedicPath}`,
-      userProfileDoctorRq,
+
+    const endpoint = `${AUTH_ENDPOINT.baseEndpoint}${AUTH_ENDPOINT.profileMedicPath}`
+    return (isUpdate) ? this.userProfileDoctorPut(endpoint, userProfileDoctorRq) : this.userProfileDoctorPost(endpoint, userProfileDoctorRq);
+
+  }
+
+  private userProfileDoctorPost(endpoint: string, userProfileDoctorRq: UserProfileDoctorRq) {
+    return this.http.post<any>(endpoint, userProfileDoctorRq,
       {
         observe: 'response'
       }
-    )
+    );
+  }
+
+  private userProfileDoctorPut(endpoint: string, userProfileDoctorRq: UserProfileDoctorRq) {
+    return this.http.put<any>(endpoint, userProfileDoctorRq,
+      {
+        observe: 'response'
+      }
+    );
   }
 }

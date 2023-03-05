@@ -19,8 +19,9 @@ export class CrearPerfilMedicoComponent implements OnInit {
   profileDoctorDto: UserProfileDoctorRq;
   imageBase64: any;
   imagePreview: any;
-
+  error = false;
   formCrearPerfilMedico!: FormGroup;
+  medicProfileAlreadyExist = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,13 +33,29 @@ export class CrearPerfilMedicoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formCrearPerfilMedico = this.formBuilder.group({
-      specialty: [{value: 1, disabled: false}, [Validators.required]],
-      licenceId: [{value: '', disabled: false}, [Validators.required, Validators.maxLength(10)]],
-      licenceValidityDate: [{value: '', disabled: false}, [Validators.required]]
+      specialty: [{value: '', disabled: false}, [Validators.required]],
+      licenceId: [{value: '', disabled: false}, [Validators.required, Validators.maxLength(20)]],
+      licenceValidityDate: [{value: '', disabled: false}, [Validators.required]],
+      licenceImage: [{value: '', disabled: false}, []],
+    });
+    this.getMedicProfile();
+
+    this.formCrearPerfilMedico.valueChanges.subscribe(value => {
+      console.log(value);
+      console.log(this.formCrearPerfilMedico.errors);
+      console.log(this.formCrearPerfilMedico.valid);
+      console.log(this.formCrearPerfilMedico.status);
+      Object.keys(this.formCrearPerfilMedico.controls).forEach(key => {
+        const controlErrors = this.formCrearPerfilMedico.controls[key].errors;
+        if (controlErrors != null) {
+          Object.keys(controlErrors).forEach(keyError => {
+           console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+          });
+        }
+      });
     });
   }
 
-  error = false;
 
   onImageSelected(event: Event) {
     this.loaderService.show();
@@ -74,20 +91,15 @@ export class CrearPerfilMedicoComponent implements OnInit {
     this.profileDoctorDto = this.formCrearPerfilMedico.value;
     this.profileDoctorDto.licenceImage = this.imageBase64;
     this.loaderService.show();
-    this.perfilService.userProfileDoctor(this.profileDoctorDto).pipe(
+    this.perfilService.userProfileDoctor(this.profileDoctorDto, this.medicProfileAlreadyExist).pipe(
       finalize(() => {
         this.loaderService.hide();
       })
     ).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.body.statusCode >= 400) {
-          this.error = true;
-          this.showError(res.message);
-        } else {
-          this.showSuccess();
-          this.router.navigate(['/home-in']);
-        }
+        this.showSuccess(this.medicProfileAlreadyExist);
+        this.router.navigate(['/home-in']);
       },
       error: (error) => {
         console.error(error);
@@ -97,8 +109,31 @@ export class CrearPerfilMedicoComponent implements OnInit {
     })
   }
 
-  showSuccess() {
-    this.toastr.success(`Tu perfil ha sido creado.`, "Creación Perfil");
+  getMedicProfile() {
+    this.error = false
+    this.loaderService.show();
+    this.perfilService.getProfileDoctor().pipe(
+      finalize(() => {
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.medicProfileAlreadyExist = true;
+        this.formCrearPerfilMedico.controls['specialty'].patchValue(res.body.specialty);
+        this.formCrearPerfilMedico.controls['licenceId']?.patchValue(res.body.licenceId);
+        this.formCrearPerfilMedico.controls['licenceValidityDate']?.patchValue(res.body.licenceValidityDate);
+        this.formCrearPerfilMedico.controls['licenceImage']?.patchValue(res.body.licenceImage);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
+  }
+
+  showSuccess(isUpdated: boolean) {
+    const message = (isUpdated) ? 'actualizado' : 'creado';
+    this.toastr.success(`Tu perfil médico ha sido ${message}.`, "Perfil");
   }
 
   showError(error: string) {
