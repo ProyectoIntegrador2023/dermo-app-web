@@ -1,0 +1,10 @@
+<div class="lista-casos">
+  <h2 class="titulo">Casos Parche:</h2>
+  <div class="casos">
+    <div class="caso cursor-pointer" *ngFor="let caso of casos" routerLink="detalle-caso">
+      <img [src]="caso.imagen" alt="imagen" class="caso-imagen">
+      <span class="caso-nombre">{{caso.caso}}</span>
+      <span class="caso-descripcion cursor-pointer">{{caso.detalle}}</span>
+    </div>
+  </div>
+</div>
