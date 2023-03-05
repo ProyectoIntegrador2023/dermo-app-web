@@ -5,7 +5,10 @@ import { CrearPerfilComponent } from './components/perfil/crear-perfil/crear-per
 import { HomeInComponent } from './components/home-in/home-in.component';
 import { HomeOutComponent } from './components/home-out/home-out.component';
 import { CrearPerfilMedicoComponent } from './components/perfil/crear-perfil-medico/crear-perfil-medico.component';
-import { GenerarDiagnosticoComponent } from './components/generar-diagnostico/generar-diagnostico.component';
+import { GenerarDiagnosticoComponent } from './components/diagnostico/generar-diagnostico/generar-diagnostico.component';
+import {TipoLesionComponent} from "./components/diagnostico/tipo-lesion/tipo-lesion.component";
+import {CasosComponent} from "./components/diagnostico/casos/casos.component";
+import {DetalleCasoComponent} from "./components/diagnostico/detalle-caso/detalle-caso.component";
 
 
 const routes: Routes = [
@@ -31,9 +34,22 @@ const routes: Routes = [
         component: CrearPerfilMedicoComponent
       },
       {
-        path: 'generar-diagnostico',
+        path: 'diagnosticos/tipo-lesion',
+        component: TipoLesionComponent
+      },
+      {
+        path: 'diagnosticos/tipo-lesion/casos',
+        component: CasosComponent
+      },
+      {
+        path: 'diagnosticos/tipo-lesion/casos/detalle-caso',
+        component: DetalleCasoComponent
+      },
+      {
+        path: 'diagnosticos/tipo-lesion/casos/detalle-caso/generar-diagnostico',
         component: GenerarDiagnosticoComponent
-      }
+      },
+
     ]
   },
 ]
