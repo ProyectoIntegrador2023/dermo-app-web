@@ -1,0 +1,10 @@
+<div class="tipo-lesion">
+  <h2 class="titulo">Selecciona el tipo de lesión que deseas diagnosticar:</h2>
+  <div class="lesiones">
+    <div class="lesion cursor-pointer" *ngFor="let lesion of lesiones" routerLink="casos">
+      <img [src]="lesion.imagen" alt="imagen" class="lesion-imagen">
+      <span class="lesion-nombre">{{lesion.nombre}}</span>
+      <span class="lesion-descripcion">{{lesion.descripcion}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.tipo-lesion {
+padding: 20px;
+}
+
+.tipo-lesion .titulo {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #042E5C;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 28px;
+}
+
+.tipo-lesion .lesiones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 40px;
+  padding: 10px;
+}
+
+.tipo-lesion .lesiones .lesion {
+  display: flex;
+  flex-direction: column;
+}
+
+.tipo-lesion .lesiones .lesion .lesion-imagen {
+  width: 100%;
+  height: auto;
+}
+
+.tipo-lesion .lesiones .lesion .lesion-nombre {
+  margin-top: 10px;
+  padding-left: 5px;
+  color: #096FDB;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.tipo-lesion .lesiones .lesion .lesion-descripcion {
+  margin-top: 2px;
+  padding-left: 5px;
+  color: #707070;
+  font-size: 16px;
+  font-style: italic;
+}
