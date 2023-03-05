@@ -28,11 +28,10 @@ describe('SideBarNavegacionComponent', () => {
 
   it('should display navigation links', () => {
     const links = fixture.debugElement.queryAll(By.css('nav ul li a'));
-    expect(links.length).toBe(4);
-    expect(links[0].nativeElement.textContent).toContain('Inicio');
-    expect(links[1].nativeElement.textContent).toContain('Diagnostico');
-    expect(links[2].nativeElement.textContent).toContain('Agenda');
-    expect(links[3].nativeElement.textContent).toContain('Reportes');
+    expect(links.length).toBe(3);
+    expect(links[0].nativeElement.textContent).toContain('Diagnóstico');
+    expect(links[1].nativeElement.textContent).toContain('Agenda');
+    expect(links[2].nativeElement.textContent).toContain('Reportes');
   });
 
 });

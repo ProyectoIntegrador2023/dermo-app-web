@@ -1,4 +1,5 @@
 export interface GenerarDiagnosticoRq {
+  id: number;
 }
 
 export interface GenerarDiagnosticoRs {

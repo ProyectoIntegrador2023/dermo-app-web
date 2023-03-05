@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetalleCasoComponent } from './detalle-caso.component';
@@ -8,7 +9,8 @@ describe('DetalleCasoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetalleCasoComponent ]
+      declarations: [ DetalleCasoComponent ],
+      imports:[HttpClientModule]
     })
     .compileComponents();
 
