@@ -80,6 +80,7 @@ export class UsuarioSignupComponent implements OnInit {
       next: (res: any) => {
         console.log(res);
         sessionStorage.setItem('lastLoginAt', res.lastLoginAt);
+        sessionStorage.setItem('email', res.email);
         this.showSuccess();
         this.router.navigate(['/home-in']);
       },
