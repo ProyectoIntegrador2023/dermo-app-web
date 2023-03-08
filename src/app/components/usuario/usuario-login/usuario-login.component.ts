@@ -4,7 +4,7 @@ import {UsuarioService} from '../usuario.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserSignInRq} from '../models/userSignIn.model';
+import {UserSignInRq, UserSignInRs} from '../models/userSignIn.model';
 import {LoaderService} from 'src/app/services/loader.service';
 import {finalize} from "rxjs";
 
@@ -73,7 +73,7 @@ export class UsuarioLoginComponent implements OnInit {
         this.loaderService.hide();
       })
     ).subscribe({
-      next: (res: any) => {
+      next: (res: UserSignInRs) => {
         console.log(res);
         sessionStorage.setItem('token', res.token);
         sessionStorage.setItem('email', res.email);

@@ -1,33 +1,33 @@
 <div class="detalle-caso">
   <div class="flex justify-content-between align-content-center">
       <h2 class="titulo">Caso 6: Detalles de la lesión</h2>
-      <button class="btn btn-primary" (click)="getDetalleCaso(correoElectronico)">Generar diagnostico</button>
+      <button class="btn btn-primary">Generar diagnostico</button>
   </div>
   <div class="mostrar-detalle-caso">
-    <div *ngIf="detalleCaso">
+    <div *ngIf="injuryDetail">
       <div class="tabla-detalles">
         <div class="fila">
           <div class="celda-campo"><strong>Correo electrónico:</strong></div>
-          <div class="celda-dato">{{ detalleCaso.correo_electronico }}</div>
+          <div class="celda-dato">{{ injuryDetail.correo_electronico }}</div>
         </div>
         <div class="fila">
           <div class="celda-campo"><strong>Tipo de lesión:</strong></div>
-          <div class="celda-dato">{{ detalleCaso.tipo_de_lesion }}</div>
+          <div class="celda-dato">{{ injuryDetail.lesiones[0].tipo_de_lesion }}</div>
         </div>
         <div class="fila">
           <div class="celda-campo"><strong>Forma de lesión:</strong></div>
-          <div class="celda-dato">{{ detalleCaso.forma_de_lesion }}</div>
+          <div class="celda-dato">{{ injuryDetail.lesiones[0].forma_de_lesion }}</div>
         </div>
         <div class="fila">
           <div class="celda-campo"><strong>Número de lesiones:</strong></div>
-          <div class="celda-dato">{{ detalleCaso.numero_de_lesiones }}</div>
+          <div class="celda-dato">{{ injuryDetail.lesiones[0].numero_de_lesiones }}</div>
         </div>
         <div class="fila">
           <div class="celda-campo"><strong>Distribución:</strong></div>
-          <div class="celda-dato">{{ detalleCaso.distribucion }}</div>
+          <div class="celda-dato">{{ injuryDetail.lesiones[0].distribucion }}</div>
         </div>
       </div>
-      <img [src]="detalleCaso.foto_de_lesion">
+      <img [src]="medicalRecordService.checkInjuryImage(injuryDetail.lesiones[0].foto_de_lesion)">
     </div>
   </div>
 </div>

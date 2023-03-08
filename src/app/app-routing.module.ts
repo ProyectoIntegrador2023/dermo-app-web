@@ -39,7 +39,8 @@ const routes: Routes = [
       },
       {
         path: 'diagnosticos/tipo-lesion/casos',
-        component: CasosComponent
+        component: CasosComponent,
+        pathMatch: 'full'
       },
       {
         path: 'diagnosticos/tipo-lesion/casos/detalle-caso',

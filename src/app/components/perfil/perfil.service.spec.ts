@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
 import { PerfilService } from './perfil.service';
 
@@ -8,7 +8,7 @@ describe('Service: Perfil', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [PerfilService],
-      imports: [HttpClientModule]
+      imports: [HttpClientTestingModule]
     });
   });
 

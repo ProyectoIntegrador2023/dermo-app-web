@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {UsuarioService} from '../usuario.service';
 import {JwtHelperService} from "@auth0/angular-jwt";
-import {UserSignUpRq} from '../models/userSignUp.model';
+import {UserSignUpRq, UserSignUpRs} from '../models/userSignUp.model';
 import {LoaderService} from 'src/app/services/loader.service';
 import {finalize} from "rxjs";
 
@@ -77,7 +77,7 @@ export class UsuarioSignupComponent implements OnInit {
         this.loaderService.hide();
       })
     ).subscribe({
-      next: (res: any) => {
+      next: (res: UserSignUpRs) => {
         console.log(res);
         sessionStorage.setItem('lastLoginAt', res.lastLoginAt);
         sessionStorage.setItem('email', res.email);
