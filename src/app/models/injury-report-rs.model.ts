@@ -15,6 +15,7 @@ export interface InjuryReportDetailedRs {
 }
 
 export interface InjuryReportInfo {
+  id: string,
   correo_electronico?: string
   tipo_de_lesion: string,
   forma_de_lesion: string,
