@@ -5,6 +5,7 @@ import {AUTH_ENDPOINT} from 'src/environments/environment';
 import {UserSignUpRq, UserSignUpRs} from './models/userSignUp.model';
 import {UserSignInRq, UserSignInRs} from './models/userSignIn.model';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,13 @@ export class UsuarioService {
     console.log('Cerrando sesion...');
     sessionStorage.clear();
     this.router.navigate(['/']);
+  }
+
+  isLoggedUser() {
+    const sessionToken = sessionStorage.getItem('token') || '';
+    const sessionEmail = sessionStorage.getItem('email') || '';
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(sessionToken);
+    return (sessionEmail && sessionToken) && decodedToken.email === sessionEmail;
   }
 }

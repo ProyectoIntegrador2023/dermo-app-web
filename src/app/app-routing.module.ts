@@ -9,6 +9,7 @@ import { GenerarDiagnosticoComponent } from './components/diagnostico/generar-di
 import {TipoLesionComponent} from "./components/diagnostico/tipo-lesion/tipo-lesion.component";
 import {CasosComponent} from "./components/diagnostico/casos/casos.component";
 import {DetalleCasoComponent} from "./components/diagnostico/detalle-caso/detalle-caso.component";
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -51,7 +52,8 @@ const routes: Routes = [
         component: GenerarDiagnosticoComponent
       },
 
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
 ]
 

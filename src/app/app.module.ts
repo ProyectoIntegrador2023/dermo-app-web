@@ -20,6 +20,7 @@ import { GenerarDiagnosticoComponent } from './components/diagnostico/generar-di
 import { TipoLesionComponent } from './components/diagnostico/tipo-lesion/tipo-lesion.component';
 import { CasosComponent } from './components/diagnostico/casos/casos.component';
 import { DetalleCasoComponent } from './components/diagnostico/detalle-caso/detalle-caso.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { DetalleCasoComponent } from './components/diagnostico/detalle-caso/deta
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

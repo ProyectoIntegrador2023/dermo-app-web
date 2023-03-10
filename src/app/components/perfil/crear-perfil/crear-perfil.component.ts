@@ -6,8 +6,8 @@ import {ToastrService} from 'ngx-toastr';
 import {LoaderService} from 'src/app/services/loader.service';
 import {UserProfileRq} from '../models/userProfile.model';
 import {PerfilService} from '../perfil.service';
-import {HttpClient} from "@angular/common/http";
 import {finalize} from 'rxjs';
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
   selector: 'app-crear-perfil',
@@ -25,12 +25,12 @@ export class CrearPerfilComponent implements OnInit {
   personalProfileAlreadyExist = false;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private toastr: ToastrService,
-    private loaderService: LoaderService,
-    private perfilService: PerfilService,
-    private router: Router,
-    private http: HttpClient) {
+    private readonly formBuilder: FormBuilder,
+    private readonly toastr: ToastrService,
+    private readonly loaderService: LoaderService,
+    private readonly perfilService: PerfilService,
+    private readonly router: Router,
+    private readonly utilService: UtilService) {
   }
 
   ngOnInit(): void {
@@ -115,7 +115,7 @@ export class CrearPerfilComponent implements OnInit {
   }
 
   loadCountries() {
-    this.http.get('assets/cities/json_cities.json').subscribe(
+    this.utilService.getCountriesList().subscribe(
       (data: any) => {
         this.paises = data.data;
       });

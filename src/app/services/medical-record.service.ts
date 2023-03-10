@@ -6,19 +6,13 @@ import {
   InjuryReportDetailedRs,
   InjuryReportRs,
 } from '../models/injury-report-rs.model';
-import { InjuryTypes } from '../models/injury-types.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MedicalRecordService {
-  constructor(private readonly http: HttpClient) {}
 
-  getInjuryTypes() {
-    return this.http.get<{ data: InjuryTypes[] }>(
-      'assets/json/injury-types.json'
-    );
-  }
+  constructor(private readonly http: HttpClient) {}
 
   getAllInjuryFromPacients(): Observable<InjuryReportRs> {
     let headers = new HttpHeaders();
