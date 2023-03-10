@@ -8,8 +8,8 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:cov": "ng test --watch=false --code-coverage",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "test:cov": "ng test --no-watch --code-coverage",
+    "test-headless": "ng test --no-watch --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix"
   },

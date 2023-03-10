@@ -63,7 +63,7 @@ jobs:
           npm run lint
       - name: Test
         run: |
-          npm test -- --no-watch --no-progress --browsers=ChromeHeadless
+          npm run test-headless
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
