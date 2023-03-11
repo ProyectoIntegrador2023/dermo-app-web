@@ -15,7 +15,7 @@ export class DetalleCasoComponent implements OnInit {
   emailParam = '';
   injuryDetail: InjuryReportDetailedRs;
   correoElectronico: string;
-  showForm: boolean = false;
+  showForm = false;
 
   constructor(
     public readonly medicalRecordService: MedicalRecordService,
