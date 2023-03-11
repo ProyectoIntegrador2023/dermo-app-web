@@ -28,7 +28,7 @@ button {
   background-color: #096fdb;
   color: white;
   height: 30px;
-  padding: 0px;
+  padding: 0;
   border: 0;
   border-radius: 13px;
   font-weight: bold;
@@ -42,6 +42,20 @@ button[disabled] {
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
+}
+
+button.btn-secondary {
+  width: 200px;
+  margin: 0;
+  background-color: white;
+  color: black;
+  height: 30px;
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 13px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -141,6 +155,79 @@ div.wrapper {
   background: #E6EAEF;
   border: 2px solid #A4B3C4;
   border-radius: 10px;
+}
+
+.seccion-diagnostico {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-size: 18px;
+  color: #042E5C;
+}
+
+
+.contenedor-tabla-diagnostico {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #E6EAEF;
+  border: 2px solid #A4B3C4;
+  border-radius: 10px;
+}
+
+.tabla-detalles-diagnostico {
+  width: 100%;
+  display: table;
+}
+
+.fila-diagnostico {
+  display: table-row;
+}
+
+.celda-diagnostico:first-child {
+  font-weight: bold;
+  background-color: #f2f2f2;
+  max-width: 150px;
+}
+
+.celda-campo-diagnostico {
+  display: table-cell;
+  padding: 5px;
+  vertical-align: middle;
+  width: 300px;
+  border: 1px solid #ccc;
+  background: #D8DEE6;
+  font-size: 12px;
+  font-weight: normal;
+  color: #096FDB;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.celda-dato-diagnostico {
+  display: table-cell;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 12px;
+  font-weight: normal;
+  color: #096FDB;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.celda-dato-diagnostico input[type=text] {
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #096FDB;
+}
+
+.texto-recomendacion {
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #096FDB;
 }
 
 footer img {

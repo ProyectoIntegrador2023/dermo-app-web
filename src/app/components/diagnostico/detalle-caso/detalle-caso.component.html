@@ -1,7 +1,10 @@
 <div class="detalle-caso">
   <div class="flex justify-content-between align-items-center">
     <h2 class="titulo">Caso 6: Detalles de la lesión</h2>
-    <button class="btn btn-primary">Generar diagnostico</button>
+    <div>
+      <button class="btn btn-secondary" (click)="showForm = false" *ngIf="showForm">Cancelar diagnostico</button>
+      <button class="ml-4 btn-primary" (click)="showDiagnosticForm()" *ngIf="!showForm">Generar diagnostico</button>
+    </div>
   </div>
   <div class="mostrar-detalle-caso">
     <div *ngIf="injuryDetail">
@@ -58,9 +61,70 @@
         </div>
       </div>
     </div>
+    <ng-container *ngIf="showForm">
+      <div class="flex justify-content-between align-items-center">
+        <h3 class="seccion-diagnostico">Diagnóstico:</h3>
+        <button class="btn btn-primary">Enviar diagnóstico</button>
+      </div>
+      <div class="contenedor-diagnostico" id="contenedorDiagnostico">
+        <div class="contenedor-tabla-diagnostico">
+          <div class="tabla-detalles-diagnostico">
+            <div class="fila-diagnostico">
+              <div class="celda-campo-diagnostico">
+                <label for="afeccion">Afección:</label>
+              </div>
+              <div class="celda-dato-diagnostico">
+                <input type="text" id="afeccion">
+              </div>
+            </div>
+            <div class="fila-diagnostico">
+              <div class="celda-campo-diagnostico">
+                <label for="grado">Grado:</label>
+              </div>
+              <div class="celda-dato-diagnostico">
+                <input type="text" id="grado">
+              </div>
+            </div>
+            <div class="fila-diagnostico">
+              <div class="celda-campo-diagnostico">
+                <label>Requiere tratamiento:</label>
+              </div>
+              <div class="celda-dato-diagnostico">
+                <input type="radio" name="tratamiento" id="si">
+                <label for="si">Si</label>
+                <input type="radio" name="tratamiento" id="no">
+                <label for="no">No</label>
+              </div>
+            </div>
+            <div class="fila-diagnostico">
+              <div class="celda-campo-diagnostico">
+                <label for="duracion">Duración</label>
+              </div>
+              <div class="celda-dato-diagnostico">
+                <input type="text" id="duracion">
+              </div>
+            </div>
+            <div class="fila-diagnostico">
+              <div class="celda-campo-diagnostico">
+                <label for="medicacion">Medicación:</label>
+              </div>
+              <div class="celda-dato-diagnostico">
+                <input type="text" id="medicacion">
+              </div>
+            </div>
+            <div class="fila-diagnostico">
+              <div class="celda-campo-diagnostico">
+                <label for="recomendacion">Recomendaciones:</label>
+              </div>
+              <div class="celda-dato-diagnostico">
+                <textarea class="texto-recomendacion" id="recomendacion"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
   </div>
-</div>
-<div class="wrapper">
 </div>
 <div class="background">
   <footer class="wrapper flex justify-content-between">

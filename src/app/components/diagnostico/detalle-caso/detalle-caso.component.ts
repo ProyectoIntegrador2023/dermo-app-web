@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { finalize } from 'rxjs';
-import { InjuryReportDetailedRs } from 'src/app/models/injury-report-rs.model';
-import { LoaderService } from 'src/app/services/loader.service';
-import { MedicalRecordService } from 'src/app/services/medical-record.service';
+import {ActivatedRoute, Params} from '@angular/router';
+import {finalize} from 'rxjs';
+import {InjuryReportDetailedRs} from 'src/app/models/injury-report-rs.model';
+import {LoaderService} from 'src/app/services/loader.service';
+import {MedicalRecordService} from 'src/app/services/medical-record.service';
+import {ViewportScroller} from "@angular/common";
 
 @Component({
   selector: 'app-detalle-caso',
@@ -14,11 +15,14 @@ export class DetalleCasoComponent implements OnInit {
   emailParam = '';
   injuryDetail: InjuryReportDetailedRs;
   correoElectronico: string;
+  showForm: boolean = false;
 
   constructor(
     public readonly medicalRecordService: MedicalRecordService,
     private readonly loaderService: LoaderService,
-    private readonly route: ActivatedRoute) {
+    private readonly route: ActivatedRoute,
+    private readonly scroller: ViewportScroller,
+  ) {
   }
 
   ngOnInit() {
@@ -40,5 +44,12 @@ export class DetalleCasoComponent implements OnInit {
         console.error(err);
       }
     })
+  }
+
+  showDiagnosticForm() {
+    setTimeout(() => {
+      this.scroller.scrollToAnchor('contenedorDiagnostico');
+    }, 0);
+    this.showForm = true;
   }
 }
