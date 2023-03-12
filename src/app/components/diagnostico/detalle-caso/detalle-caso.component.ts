@@ -55,13 +55,13 @@ export class DetalleCasoComponent implements OnInit {
     this.validateIfMedicPerfilExist();
 
     this.formDiagnostic = this.formBuilder.group({
-      condition: [{value: '', disabled: false }, [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
-      level: [{value: '', disabled: false}, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+      condition: [{value: '', disabled: false }, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      level: [{value: '', disabled: false}, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       requeresTreatment: [{value: true, disabled: false}, [Validators.required]],
       treatmentTerm: [{value: '', disabled: false}, [Validators.required]],
       medicines: [{value: '', disabled: false}, [Validators.required]],
       treatmentControl: [{value: '', disabled: false }, [Validators.required]],
-      recommendations: [{value: '', disabled: false}, [Validators.required, Validators.minLength(4), Validators.maxLength(200)]],
+      recommendations: [{value: '', disabled: false}, [Validators.required, Validators.minLength(5), Validators.maxLength(200)]],
     });
 
     this.medicalRecordService.getAllInjuryFromPacientsByEmail(this.emailParam).pipe(

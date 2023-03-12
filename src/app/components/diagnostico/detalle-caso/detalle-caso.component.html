@@ -1,8 +1,7 @@
 <div class="detalle-caso">
   <div class="flex justify-content-between align-items-center">
     <div>
-      <h2 class="titulo">Caso {{idCasoParam}}</h2><br>
-      <h2 class="titulo">Detalles de la lesión</h2>
+      <h2 class="titulo">Caso - {{idCasoParam.slice(0,8)}}: Detalles de la lesión</h2><br>
     </div>
     <div>
       <button class="btn-primary" (click)="showDiagnosticForm()" *ngIf="!showForm">Generar diagnostico</button>
@@ -84,7 +83,7 @@
                   <label for="afeccion">Afección:</label>
                 </div>
                 <div class="celda-dato-diagnostico">
-                  <input type="text" id="afeccion" formControlName="condition" maxlength="100" minlength="4">
+                  <input type="text" id="afeccion" formControlName="condition" maxlength="100" minlength="5">
                   <div
                     *ngIf="formDiagnostic.controls['condition'].touched && formDiagnostic.controls['condition'].errors?.required"
                     class="message-error">
@@ -97,7 +96,7 @@
                   <label for="grado">Grado:</label>
                 </div>
                 <div class="celda-dato-diagnostico">
-                  <input type="text" id="grado" formControlName="level" maxlength="20" minlength="4">
+                  <input type="text" id="grado" formControlName="level" maxlength="20" minlength="5">
                   <div
                     *ngIf="formDiagnostic.controls['level'].touched && formDiagnostic.controls['level'].errors?.required"
                     class="message-error">
@@ -166,7 +165,7 @@
                 </div>
                 <div class="celda-dato-diagnostico">
                   <textarea class="texto-recomendacion" id="recomendacion" formControlName="recommendations"
-                            maxlength="200" minlength="4"></textarea>
+                            maxlength="200" minlength="5"></textarea>
                   <div
                     *ngIf="formDiagnostic.controls['recommendations'].touched && formDiagnostic.controls['recommendations'].errors?.required"
                     class="message-error">
