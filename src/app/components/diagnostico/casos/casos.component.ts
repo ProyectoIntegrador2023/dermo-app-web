@@ -15,7 +15,7 @@ export class CasosComponent implements OnInit {
   injuryTypeParam: string;
   injuryList: InjuryReportInfo[]
   injuryListFiltered: InjuryReportInfo[]
-  searchText: string = '';
+  searchText: string;
 
   constructor(
     public readonly medicalRecordService: MedicalRecordService,
