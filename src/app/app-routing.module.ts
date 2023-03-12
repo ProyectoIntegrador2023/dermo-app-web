@@ -9,6 +9,7 @@ import {TipoLesionComponent} from "./components/diagnostico/tipo-lesion/tipo-les
 import {CasosComponent} from "./components/diagnostico/casos/casos.component";
 import {DetalleCasoComponent} from "./components/diagnostico/detalle-caso/detalle-caso.component";
 import { AuthGuard } from './shared/guards/auth.guard';
+import { ProfileGuard } from './shared/guards/profile.guard';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {
     path: 'home-in',
     component: HomeInComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -35,20 +37,21 @@ const routes: Routes = [
       },
       {
         path: 'diagnosticos/tipo-lesion',
-        component: TipoLesionComponent
+        component: TipoLesionComponent,
+        canActivate: [ProfileGuard],
       },
       {
         path: 'diagnosticos/tipo-lesion/casos',
         component: CasosComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [ProfileGuard],
       },
       {
         path: 'diagnosticos/tipo-lesion/casos/detalle-caso',
-        component: DetalleCasoComponent
+        component: DetalleCasoComponent,
+        canActivate: [ProfileGuard],
       },
-
     ],
-    canActivate: [AuthGuard]
   },
 ]
 
