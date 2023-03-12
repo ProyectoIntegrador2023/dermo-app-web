@@ -1,0 +1,12 @@
+<div class="tipo-lesion">
+  <h2 class="titulo">Selecciona el tipo de lesión que deseas diagnosticar:</h2>
+  <div class="lesiones">
+    <div class="lesion" id="{{injury.id}}" *ngFor="let injury of injurytypeList" (click)="injuryDetail(injury)">
+      <div class="lesion-img-container">
+        <img [src]="medicalRecordService.checkInjuryImage(injury.imagen)" alt="imagen" class="lesion-imagen">
+      </div>
+      <span class="lesion-nombre">{{injury.nombre}}</span>
+      <span class="lesion-descripcion">{{injury.descripcion}}</span>
+    </div>
+  </div>
+</div>

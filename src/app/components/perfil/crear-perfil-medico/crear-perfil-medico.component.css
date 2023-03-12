@@ -1,0 +1,157 @@
+::placeholder {
+  font-size: 16px;
+  color: white;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 65px);
+}
+
+.wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 5px;
+  font-size: 30px;
+  color: #096fdb;
+}
+
+p {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 18px;
+  color: #096fdb;
+}
+
+div.wrapper {
+  flex-grow: 1;
+}
+
+.wrapper-control {
+  max-width: 700px;
+  position: relative;
+  margin: 0 auto 20px auto;
+}
+
+.wrapper-control img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(10px, -50%);
+}
+
+select {
+  width: 100%;
+  height: 33px;
+  font-size: 16px;
+  background-color: #9aabbe;
+  border-radius: 9px;
+  border: 2px solid #042e5c;
+  padding: 0 30px;
+  color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 33px;
+  background-color: #9aabbe;
+  padding: 0 35px;
+  border-radius: 9px;
+  border-color: #042e5c;
+  color: white;
+  font-size: 18px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: transparent;
+  padding: 5px;
+  display: initial;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: invert(1);
+  cursor: pointer;
+}
+
+input[type="date"] {
+  background-color: #9aabbe;
+  padding: 0 35px;
+  color: white;
+  width: 100%;
+  height: 33px;
+  border-radius: 9px;
+  border-color: #042e5c;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  width: 100%;
+  height: 33px;
+  font-size: 16px;
+  background-color: #9aabbe;
+  border-radius: 9px;
+  border: 2px solid #042e5c;
+  padding: 0 30px;
+  color: white;
+}
+.image-preview{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.image-preview img {
+  max-width: 200px;
+  height: auto;
+}
+
+.background {
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+footer img {
+  width: 100%;
+  max-width: 35px;
+  opacity: 0.8;
+}
+
+button {
+  width: 200px;
+  margin: 20px 0;
+  background-color: #096fdb;
+  color: white;
+  height: 30px;
+  padding: 0px;
+  border: 0;
+  border-radius: 13px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}

@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -15,7 +15,7 @@ describe('UsuarioSignupComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UsuarioSignupComponent ],
       imports: [
-        HttpClientModule,
+        HttpClientTestingModule,
         CommonModule,
         ReactiveFormsModule,
         ToastrModule.forRoot({
@@ -38,4 +38,12 @@ describe('UsuarioSignupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit closeSignUp event when close() is called', () => {
+    const component = fixture.componentInstance;
+    spyOn(component.closeSignUp, 'emit');
+    component.close();
+    expect(component.closeSignUp.emit).toHaveBeenCalledWith(false);
+  });
+
 });

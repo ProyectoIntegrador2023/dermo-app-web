@@ -1,6 +1,5 @@
 @import "/src/assets/css/inputs.css";
 @import "/src/assets/css/button.css";
-@import "/src/assets/css/links.css";
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -22,7 +21,7 @@ a {
 .separador {
   border-style: solid;
   color: darkgoldenrod;
-  border-style: 2px;
+  border-width: 2px;
 }
 
 .inicio {
@@ -69,11 +68,11 @@ input[type="checkbox"] {
   margin-right: 10px;
 }
 
-
 @media (max-width: 700px) {
   header {
     flex-direction: column;
   }
+
   nav {
     padding: 10px 10px;
   }
@@ -83,11 +82,11 @@ input[type="checkbox"] {
   margin: 0;
   width: 100%;
   height: 550px;
-  border-radius: 0px;
+  border-radius: 0;
   font-size: 18px;
   position: absolute;
   top: 10.3%;
-  padding: 1px 0px;
+  padding: 1px 0;
 }
 
 .pagePrincipal {
@@ -101,3 +100,7 @@ input[type="checkbox"] {
   border-radius: 10px;
 }
 
+.message-error {
+  color: red;
+  font-weight: 500;
+}

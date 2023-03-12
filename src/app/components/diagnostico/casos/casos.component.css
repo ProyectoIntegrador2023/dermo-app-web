@@ -1,0 +1,84 @@
+.filtro-busqueda input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.form-busqueda {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #042E5C;
+}
+
+.filtro-busqueda input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #042E5C;
+  font-size: 16px;
+  color: #042E5C;
+}
+
+.btn-limpiar {
+  margin: 20px 0 20px 0;
+  width: 100px;
+  background-color: #096fdb;
+  color: white;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.lista-casos {
+  padding: 20px;
+}
+
+.lista-casos .titulo {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #042E5C;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 28px;
+}
+
+.lista-casos .casos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 40px;
+  padding: 10px;
+}
+
+.lista-casos .casos .caso {
+  display: flex;
+  flex-direction: column;
+}
+
+.lista-casos .casos .caso .caso-imagen {
+  width: 100%;
+  height: auto;
+}
+
+.lista-casos .casos .caso .caso-nombre {
+  margin-top: 10px;
+  padding-left: 5px;
+  color: #096FDB;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.lista-casos .casos .caso .caso-descripcion {
+  display: inline-block;
+  margin-top: 2px;
+  color: #707070;
+  font-size: 16px;
+  font-style: italic;
+  padding: 5px 7px;
+  border-radius: 15px;
+}

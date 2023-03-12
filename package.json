@@ -1,13 +1,15 @@
 {
   "name": "dermo-web-app",
-  "version": "0.0.1",
+  "version": "1.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "test": "ng test",
+    "test:cov": "ng test --no-watch --code-coverage",
+    "test-headless": "ng test --no-watch --browsers=ChromeHeadless --code-coverage",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix"
   },
@@ -24,6 +26,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "ngx-toastr": "^16.0.2",
     "npm": "^9.4.0",
+    "primeflex": "^3.3.0",
     "puppeteer": "^19.6.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -46,9 +49,11 @@
     "karma": "^6.4.1",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "sonarqube-scanner": "^3.0.1",
     "typescript": "~4.9.4"
   }
 }
