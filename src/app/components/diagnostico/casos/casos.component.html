@@ -1,10 +1,18 @@
 <div class="lista-casos">
   <h2 class="titulo">Casos {{injuryTypeParam}}:</h2>
+  <div class="filtro-busqueda">
+    <form class="form-busqueda flex justify-content-between align-items-center">
+      <input type="text" id="busqueda" name="busqueda" placeholder="Buscar casos..." [(ngModel)]="searchText"
+             (ngModelChange)="filtrar(searchText)">
+      <button class="btn-limpiar" type="button" (click)="limpiar()">Limpiar</button>
+    </form>
+  </div>
   <div class="casos">
-    <div class="caso cursor-pointer" [id]="injury.id" *ngFor="let injury of injuryListFiltered" (click)="injuryDetail(injury)">
+    <div class="caso cursor-pointer" [id]="injury.id" *ngFor="let injury of injuryListFiltered"
+         (click)="injuryDetail(injury)">
       <img [src]="medicalRecordService.checkInjuryImage(injury.foto_de_lesion)" alt="imagen" class="caso-imagen">
-      <span class="caso-nombre">{{injury.distribucion}}</span>
-      <span class="caso-descripcion cursor-pointer">{{injury.forma_de_lesion}}</span>
+      <span class="caso-nombre">Caso: {{injury.id.slice(0, 8)}}</span>
+      <span class="caso-descripcion cursor-pointer">{{injury.distribucion}} - {{injury.numero_de_lesiones}} </span>
     </div>
     <div *ngIf="injuryListFiltered && injuryListFiltered.length === 0">
       <div>No hay casos reportados para este tipo de lesión.</div>

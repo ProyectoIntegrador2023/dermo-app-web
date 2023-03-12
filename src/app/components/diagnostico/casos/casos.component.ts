@@ -15,7 +15,7 @@ export class CasosComponent implements OnInit {
   injuryTypeParam: string;
   injuryList: InjuryReportInfo[]
   injuryListFiltered: InjuryReportInfo[]
-  defaultImage = 'assets/img/lesion.svg';
+  searchText: string = '';
 
   constructor(
     public readonly medicalRecordService: MedicalRecordService,
@@ -58,5 +58,21 @@ export class CasosComponent implements OnInit {
         idCaso: injury.id
       }
     });
+  }
+
+  filtrar(searchText: string) {
+    this.searchText = searchText;
+    if (searchText === '') {
+      this.injuryListFiltered = this.injuryList;
+    } else {
+      this.injuryListFiltered = this.injuryList.filter((injury) => {
+        return injury.id.toString().startsWith(searchText);
+      });
+    }
+  }
+
+  limpiar() {
+    this.searchText = '';
+    this.filtrar('');
   }
 }
