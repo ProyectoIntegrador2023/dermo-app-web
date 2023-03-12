@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 
 import { DetalleCasoComponent } from './detalle-caso.component';
+import {FormsModule} from "@angular/forms";
 
 describe('DetalleCasoComponent', () => {
   let component: DetalleCasoComponent;
@@ -15,6 +16,7 @@ describe('DetalleCasoComponent', () => {
       imports:[
         HttpClientModule,
         RouterTestingModule,
+        FormsModule,
         ToastrModule.forRoot({
           timeOut: 7000,
           positionClass: 'toast-bottom-right',

@@ -11,7 +11,7 @@
     <div class="caso cursor-pointer" [id]="injury.id" *ngFor="let injury of injuryListFiltered"
          (click)="injuryDetail(injury)">
       <img [src]="medicalRecordService.checkInjuryImage(injury.foto_de_lesion)" alt="imagen" class="caso-imagen">
-      <span class="caso-nombre">Caso: {{injury.id.slice(0, 8)}}</span>
+      <span class="caso-nombre">Caso: {{injury.id?.slice(0, 8)}}</span>
       <span class="caso-descripcion cursor-pointer">{{injury.distribucion}} - {{injury.numero_de_lesiones}} </span>
     </div>
     <div *ngIf="injuryListFiltered && injuryListFiltered.length === 0">
