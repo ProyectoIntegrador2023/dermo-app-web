@@ -1,3 +1,39 @@
+.filtro-busqueda input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.form-busqueda {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #042E5C;
+}
+
+.filtro-busqueda input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #042E5C;
+  font-size: 16px;
+  color: #042E5C;
+}
+
+.btn-limpiar {
+  margin: 20px 0 20px 0;
+  width: 100px;
+  background-color: #096fdb;
+  color: white;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .lista-casos {
   padding: 20px;
 }
