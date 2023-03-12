@@ -1,16 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule,  ToastrService } from 'ngx-toastr';
 import { CrearPerfilMedicoComponent } from './crear-perfil-medico.component';
+import { PerfilService } from '../perfil.service';
+
+
 
 describe('CrearPerfilMedicoComponent', () => {
   let component: CrearPerfilMedicoComponent;
   let fixture: ComponentFixture<CrearPerfilMedicoComponent>;
+  let perfilServiceSpy: jasmine.SpyObj<PerfilService>;
+
 
   beforeEach(async () => {
+    perfilServiceSpy = jasmine.createSpyObj('PerfilService', ['getProfileDoctor', 'userProfileDoctor']);
+
     await TestBed.configureTestingModule({
       declarations: [ CrearPerfilMedicoComponent ],
       imports: [
@@ -24,7 +31,11 @@ describe('CrearPerfilMedicoComponent', () => {
           preventDuplicates: true,
         }),
       ],
-      providers: [ToastrService]
+      providers: [
+        FormBuilder,
+        ToastrService,
+        { provide: PerfilService, useValue: perfilServiceSpy }
+      ]
     })
     .compileComponents();
 
@@ -36,4 +47,19 @@ describe('CrearPerfilMedicoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create the form with required fields', () => {
+    expect(component.formCrearPerfilMedico).toBeDefined();
+    expect(component.formCrearPerfilMedico.controls['specialty']).toBeDefined();
+    expect(component.formCrearPerfilMedico.controls['licenceId']).toBeDefined();
+    expect(component.formCrearPerfilMedico.controls['licenceValidityDate']).toBeDefined();
+  });
+
+  it('should call getMedicProfile on init', () => {
+    spyOn(component, 'getMedicProfile');
+    component.ngOnInit();
+    expect(component.getMedicProfile).toHaveBeenCalled();
+  });
+
+
 });

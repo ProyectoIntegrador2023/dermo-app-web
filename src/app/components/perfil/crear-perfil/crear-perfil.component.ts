@@ -15,6 +15,9 @@ import { UtilService } from 'src/app/shared/services/util.service';
   styleUrls: ['./crear-perfil.component.css']
 })
 export class CrearPerfilComponent implements OnInit {
+  onSubmit() {
+    throw new Error('Method not implemented.');
+  }
 
   helper = new JwtHelperService();
   profileDto: UserProfileRq;
