@@ -63,7 +63,7 @@ jobs:
           npm run lint
       - name: Test
         run: |
-          npm test -- --no-watch --no-progress --browsers=ChromeHeadless
+          npm run test-headless
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
@@ -77,6 +77,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   cd:
+    if: github.ref == 'refs/heads/Develop' || github.ref == 'refs/heads/main'
     name: Angular GitHub CI-CD
     runs-on: ubuntu-20.04
     steps:

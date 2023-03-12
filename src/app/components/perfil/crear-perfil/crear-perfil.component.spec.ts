@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 
+
 import { CrearPerfilComponent } from './crear-perfil.component';
 
 describe('CrearPerfilComponent', () => {
@@ -87,4 +88,29 @@ describe('CrearPerfilComponent', () => {
     expect(city.valid).toBeFalsy();
     expect(city.errors?.required).toBeTruthy();
   });
+
+  it('should initialize the form correctly', () => {
+    expect(component.formCrearPerfil).toBeDefined();
+    expect(component.formCrearPerfil.controls['name']).toBeDefined();
+    expect(component.formCrearPerfil.controls['age']).toBeDefined();
+    expect(component.formCrearPerfil.controls['country']).toBeDefined();
+    expect(component.formCrearPerfil.controls['city']).toBeDefined();
+
+  });
+
+  it('should call onCreatePerfil() function when the form is valid', () => {
+    spyOn(component, 'onCreatePerfil');
+    component.formCrearPerfil.setValue({
+      name: 'Test',
+      age: 18,
+      country: 'Test country',
+      city: 'Test city'
+    });
+    fixture.detectChanges();
+    const button = fixture.nativeElement.querySelector('button');
+    button.click();
+    expect(component.onCreatePerfil).toHaveBeenCalled();
+  });
+
+
 });

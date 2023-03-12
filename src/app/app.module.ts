@@ -16,6 +16,10 @@ import { SideBarNavegacionComponent } from './components/side-bar-navegacion/sid
 import { BienvenidoComponent } from './components/bienvenido/bienvenido.component';
 import { PerfilModule } from './components/perfil/perfil.module';
 import { LoaderComponent } from './components/loader/loader.component';
+import { TipoLesionComponent } from './components/diagnostico/tipo-lesion/tipo-lesion.component';
+import { CasosComponent } from './components/diagnostico/casos/casos.component';
+import { DetalleCasoComponent } from './components/diagnostico/detalle-caso/detalle-caso.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -27,7 +31,10 @@ import { LoaderComponent } from './components/loader/loader.component';
     HeaderPrivadoComponent,
     SideBarNavegacionComponent,
     BienvenidoComponent,
-    LoaderComponent
+    LoaderComponent,
+    TipoLesionComponent,
+    CasosComponent,
+    DetalleCasoComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,8 @@ import { LoaderComponent } from './components/loader/loader.component';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

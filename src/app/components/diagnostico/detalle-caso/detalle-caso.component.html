@@ -1,0 +1,189 @@
+<div class="detalle-caso">
+  <div class="flex justify-content-between align-items-center">
+    <div>
+      <h2 class="titulo">Caso - {{idCasoParam?.slice(0,8)}}: Detalles de la lesión</h2><br>
+    </div>
+    <div>
+      <button class="btn-primary" (click)="showDiagnosticForm()" *ngIf="!showForm">Generar diagnostico</button>
+    </div>
+  </div>
+  <div class="mostrar-detalle-caso">
+    <div *ngIf="injuryDetail">
+      <div class="tablas">
+        <div class="contenedor-tabla">
+          <div class="tabla-detalles">
+            <div class="fila">
+              <div class="celda-campo">Correo electrónico:</div>
+              <div class="celda-dato">{{ injuryDetail.correo_electronico }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Nombre:</div>
+              <div class="celda-dato">{{ injuryDetail.nombre }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Edad:</div>
+              <div class="celda-dato">{{ injuryDetail.edad }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Ciudad:</div>
+              <div class="celda-dato">{{ injuryDetail.ciudad }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Tipo Piel:</div>
+              <div class="celda-dato">{{ injuryDetail.tipo_de_piel }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="contenedor-tabla">
+          <div class="tabla-detalles">
+            <div class="fila">
+              <div class="celda-campo">Tipo de lesión:</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.tipo_de_lesion }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Forma de lesión:</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.forma_de_lesion }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Número de lesiones:</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.numero_de_lesiones }}</div>
+            </div>
+            <div class="fila">
+              <div class="celda-campo">Distribución:</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.distribucion }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="seccion-imagen-lesion">
+        <h3>Observar lesión:</h3>
+        <div class="contenedor-imagen">
+          <img [src]="medicalRecordService.checkInjuryImage(injuryDetail.lesion.foto_de_lesion)">
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="showForm">
+      <form [formGroup]="formDiagnostic" autocomplete="off">
+        <div class="flex justify-content-between align-items-center">
+          <div>
+            <h3 class="seccion-diagnostico">Diagnóstico:</h3>
+          </div>
+          <div class="container-btn">
+            <button class="btn btn-secondary" (click)="showForm = false" *ngIf="showForm">Cancelar diagnostico</button>
+            <button class="ml-4 btn btn-primary" [disabled]="formDiagnostic.invalid" (click)="onSendDiagnostic()">Enviar
+              diagnóstico
+            </button>
+          </div>
+        </div>
+        <div class="contenedor-diagnostico" id="contenedorDiagnostico">
+          <div class="contenedor-tabla-diagnostico">
+            <div class="tabla-detalles-diagnostico">
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label for="afeccion">Afección:</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <input type="text" id="afeccion" formControlName="condition" maxlength="100" minlength="5">
+                  <div
+                    *ngIf="formDiagnostic.controls['condition'].touched && formDiagnostic.controls['condition'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label for="grado">Grado:</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <input type="text" id="grado" formControlName="level" maxlength="20" minlength="5">
+                  <div
+                    *ngIf="formDiagnostic.controls['level'].touched && formDiagnostic.controls['level'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label>Requiere tratamiento:</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <input type="radio" [value]="true" id="si" formControlName="requeresTreatment">
+                  <label for="si">Si</label>
+                  <input type="radio" [value]="false" id="no" formControlName="requeresTreatment">
+                  <label for="no">No</label>
+                  <div
+                    *ngIf="formDiagnostic.controls['requeresTreatment'].touched && formDiagnostic.controls['requeresTreatment'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label for="duracion">Duración</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <input type="text" id="duracion" formControlName="treatmentTerm">
+                  <div
+                    *ngIf="formDiagnostic.controls['treatmentTerm'].touched && formDiagnostic.controls['treatmentTerm'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label for="medicacion">Medicación:</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <input type="text" id="medicacion" formControlName="medicines">
+                  <div
+                    *ngIf="formDiagnostic.controls['medicines'].touched && formDiagnostic.controls['medicines'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label for="control">Control:</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <textarea class="texto-recomendacion" id="control" formControlName="treatmentControl"></textarea>
+                  <div
+                    *ngIf="formDiagnostic.controls['treatmentControl'].touched && formDiagnostic.controls['treatmentControl'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fila-diagnostico">
+                <div class="celda-campo-diagnostico">
+                  <label for="recomendacion">Recomendaciones:</label>
+                </div>
+                <div class="celda-dato-diagnostico">
+                  <textarea class="texto-recomendacion" id="recomendacion" formControlName="recommendations"
+                            maxlength="200" minlength="5"></textarea>
+                  <div
+                    *ngIf="formDiagnostic.controls['recommendations'].touched && formDiagnostic.controls['recommendations'].errors?.required"
+                    class="message-error">
+                    <div class="message-error">Campo obligatorio</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+</div>
+<div class="background">
+  <footer class="wrapper flex justify-content-between">
+    <img src="assets/img/cuaderno.svg" alt="">
+    <img src="assets/img/analisis.svg" alt="">
+    <img src="assets/img/archivo.svg" alt="">
+  </footer>
+</div>
