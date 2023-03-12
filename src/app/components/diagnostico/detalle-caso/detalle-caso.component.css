@@ -165,6 +165,10 @@ div.wrapper {
   color: #042E5C;
 }
 
+.container-btn {
+  padding: 10px;
+  margin: 0;
+}
 
 .contenedor-tabla-diagnostico {
   display: flex;
