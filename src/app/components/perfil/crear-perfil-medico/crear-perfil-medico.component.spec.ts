@@ -6,17 +6,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule,  ToastrService } from 'ngx-toastr';
 import { CrearPerfilMedicoComponent } from './crear-perfil-medico.component';
 import { PerfilService } from '../perfil.service';
-
+import { of } from 'rxjs';
 
 
 describe('CrearPerfilMedicoComponent', () => {
   let component: CrearPerfilMedicoComponent;
   let fixture: ComponentFixture<CrearPerfilMedicoComponent>;
-  let perfilServiceSpy: jasmine.SpyObj<PerfilService>;
-
 
   beforeEach(async () => {
-    perfilServiceSpy = jasmine.createSpyObj('PerfilService', ['getProfileDoctor', 'userProfileDoctor']);
 
     await TestBed.configureTestingModule({
       declarations: [ CrearPerfilMedicoComponent ],
@@ -34,7 +31,7 @@ describe('CrearPerfilMedicoComponent', () => {
       providers: [
         FormBuilder,
         ToastrService,
-        { provide: PerfilService, useValue: perfilServiceSpy }
+        PerfilService,
       ]
     })
     .compileComponents();
@@ -49,6 +46,11 @@ describe('CrearPerfilMedicoComponent', () => {
   });
 
   it('should create the form with required fields', () => {
+    const perfilServiceSpy = jasmine.createSpyObj('PerfilService', {
+      'getProfileDoctor': of('mock data'),
+      'userProfileDoctor': 'some val'
+    });
+
     expect(component.formCrearPerfilMedico).toBeDefined();
     expect(component.formCrearPerfilMedico.controls['specialty']).toBeDefined();
     expect(component.formCrearPerfilMedico.controls['licenceId']).toBeDefined();
@@ -56,6 +58,11 @@ describe('CrearPerfilMedicoComponent', () => {
   });
 
   it('should call getMedicProfile on init', () => {
+    const perfilServiceSpy = jasmine.createSpyObj('PerfilService', {
+      'getProfileDoctor': of('mock data'),
+      'userProfileDoctor': 'some val'
+    });
+
     spyOn(component, 'getMedicProfile');
     component.ngOnInit();
     expect(component.getMedicProfile).toHaveBeenCalled();

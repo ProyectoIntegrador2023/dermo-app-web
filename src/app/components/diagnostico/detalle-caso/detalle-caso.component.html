@@ -1,6 +1,9 @@
 <div class="detalle-caso">
   <div class="flex justify-content-between align-items-center">
-    <h2 class="titulo">Caso {{injuryDetail}}: Detalles de la lesión</h2>
+    <div>
+      <h2 class="titulo">Caso {{idCasoParam}}</h2><br>
+      <h2 class="titulo">Detalles de la lesión</h2>
+    </div>
     <div>
       <button class="btn-primary" (click)="showDiagnosticForm()" *ngIf="!showForm">Generar diagnostico</button>
     </div>
@@ -36,19 +39,19 @@
           <div class="tabla-detalles">
             <div class="fila">
               <div class="celda-campo">Tipo de lesión:</div>
-              <div class="celda-dato">{{ injuryDetail.lesiones[0].tipo_de_lesion }}</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.tipo_de_lesion }}</div>
             </div>
             <div class="fila">
               <div class="celda-campo">Forma de lesión:</div>
-              <div class="celda-dato">{{ injuryDetail.lesiones[0].forma_de_lesion }}</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.forma_de_lesion }}</div>
             </div>
             <div class="fila">
               <div class="celda-campo">Número de lesiones:</div>
-              <div class="celda-dato">{{ injuryDetail.lesiones[0].numero_de_lesiones }}</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.numero_de_lesiones }}</div>
             </div>
             <div class="fila">
               <div class="celda-campo">Distribución:</div>
-              <div class="celda-dato">{{ injuryDetail.lesiones[0].distribucion }}</div>
+              <div class="celda-dato">{{ injuryDetail.lesion.distribucion }}</div>
             </div>
           </div>
         </div>
@@ -56,7 +59,7 @@
       <div class="seccion-imagen-lesion">
         <h3>Observar lesión:</h3>
         <div class="contenedor-imagen">
-          <img [src]="medicalRecordService.checkInjuryImage(injuryDetail.lesiones[0].foto_de_lesion)">
+          <img [src]="medicalRecordService.checkInjuryImage(injuryDetail.lesion.foto_de_lesion)">
         </div>
       </div>
     </div>

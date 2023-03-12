@@ -24,3 +24,15 @@ export interface InjuryReportInfo {
   foto_de_lesion: string,
   created_at: string,
 }
+
+export interface InjuryReportDetailed {
+  correo_electronico: string,
+  nombre: string,
+  edad: string,
+  ciudad: string,
+  tipo_de_piel: string,
+  foto_de_piel: string,
+  description: string,
+  created_at: string,
+  lesion: InjuryReportInfo,
+}

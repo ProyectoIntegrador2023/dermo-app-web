@@ -13,19 +13,17 @@ export class DiagnosticService {
   ) {
   }
 
-  diagnostic(diagnosticDto: DiagnosticRq, isUpdate: boolean): Observable<any> {
-    const diagnosticRq: DiagnosticRq = {
-      condition: diagnosticDto.condition,
-      level: diagnosticDto.level,
-      requeresTreatment: diagnosticDto.requeresTreatment,
-      medicines: diagnosticDto.medicines,
-      treatmentTerm: diagnosticDto.treatmentTerm,
-      treatmentControl: diagnosticDto.treatmentControl,
-      recommendations: diagnosticDto.recommendations
-    };
+  getDiagnostic(injuryUId: string): Observable<any> {
+    return this.http.get<any>(`${DIAGNOSTIC_ENDPOINT.baseEndpoint}${DIAGNOSTIC_ENDPOINT.queryInjuryPath}/${injuryUId}`,
+      {
+        observe: 'response'
+      }
+    )
+  }
 
+  registerDiagnostic(diagnosticDto: DiagnosticRq, isUpdate: boolean): Observable<any> {
     const endpoint = `${DIAGNOSTIC_ENDPOINT.baseEndpoint}${DIAGNOSTIC_ENDPOINT.registerPath}`
-    return (isUpdate) ? this.diagnosticoPut(endpoint, diagnosticRq) : this.diagnosticoPost(endpoint, diagnosticRq);
+    return (isUpdate) ? this.diagnosticoPut(endpoint, diagnosticDto) : this.diagnosticoPost(endpoint, diagnosticDto);
 
   }
 

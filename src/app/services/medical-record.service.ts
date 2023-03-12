@@ -18,7 +18,7 @@ export class MedicalRecordService {
     let headers = new HttpHeaders();
     headers = headers
       .set('Content-Type', 'application/json; charset=utf-8')
-      .set('dermo-traceability-id', 'c2f579cd-ed18-40dc-9ef3-26f33a637175');
+      .set('dermo-traceability-id', '9aabe392-4399-4eb4-95da-c8de9393c0c0');
     return this.http.get<InjuryReportRs>(
       `${INJURY_REPORT_ENDPOINT.baseEndpoint}${INJURY_REPORT_ENDPOINT.getAllLessonsPath}`,
       { headers }
@@ -37,6 +37,16 @@ export class MedicalRecordService {
       params: {
         correoElectronico: email
       } });
+  }
+
+  getAllPatientsRegistered(
+  ): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('dermo-traceability-id', 'b8e8a459-d34f-4ff9-8a97-203d55c659eb');
+    return this.http.get<any>(`${INJURY_REPORT_ENDPOINT.baseEndpoint}${INJURY_REPORT_ENDPOINT.getAllPatientsPath}`,
+    { headers });
   }
 
   checkInjuryImage(urlImage: string) {

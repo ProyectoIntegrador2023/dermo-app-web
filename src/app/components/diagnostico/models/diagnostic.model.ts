@@ -6,4 +6,6 @@ export interface DiagnosticRq {
   medicines: string;
   treatmentControl: string;
   recommendations: string;
+  injuryId: string;
+  medicId: string;
 }

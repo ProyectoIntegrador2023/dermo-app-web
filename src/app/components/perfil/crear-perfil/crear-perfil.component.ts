@@ -62,13 +62,9 @@ export class CrearPerfilComponent implements OnInit {
     ).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.body.statusCode >= 400) {
-          this.error = true;
-          this.showError(res.message);
-        } else {
-          this.showSuccess(this.personalProfileAlreadyExist);
-          this.router.navigate([`/home-in`]);
-        }
+        sessionStorage.setItem('medicId', res.body.id);
+        this.showSuccess(this.personalProfileAlreadyExist);
+        this.router.navigate([`/home-in`]);
       },
       error: (error) => {
         console.error(error);

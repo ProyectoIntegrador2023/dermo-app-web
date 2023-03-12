@@ -39,8 +39,6 @@ export class CasosComponent implements OnInit {
         this.injuryList = data.lesiones;
         if (this.injuryTypeParam) {
           this.injuryListFiltered = data.lesiones.filter((resp) => {
-            console.log('injuryTypeParam ', this.injuryTypeParam)
-            console.log('tipo_de_lesion', resp.tipo_de_lesion)
             console.log(resp.tipo_de_lesion == this.injuryTypeParam)
             return resp.tipo_de_lesion == this.injuryTypeParam
           })
@@ -54,6 +52,11 @@ export class CasosComponent implements OnInit {
 
   injuryDetail(injury: InjuryReportInfo) {
     console.log(injury);
-    this.router.navigate(['/home-in/diagnosticos/tipo-lesion/casos/detalle-caso'], { queryParams: {'paciente': injury.correo_electronico}})
+    this.router.navigate(['/home-in/diagnosticos/tipo-lesion/casos/detalle-caso'], {
+      queryParams: {
+        paciente: injury.correo_electronico,
+        idCaso: injury.id
+      }
+    });
   }
 }

@@ -38,7 +38,7 @@ export class JwtInterceptorService implements HttpInterceptor {
        return;
       }
       if(isLoggedIn) {
-        this.toastr.error('Su sesión ha vencido, por favor ingrese nuevamente.', "Error de sesión - token")
+        this.toastr.error('Su sesión ha vencido, por favor ingrese nuevamente.', "Sesión finalizada")
         this.userService.finalizeSession();
       }
     }

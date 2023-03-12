@@ -2,7 +2,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { HeaderComponent } from '../header/header.component';
-import { UsuarioLoginComponent } from '../usuario/usuario-login/usuario-login.component';
 import { UsuarioService } from '../usuario/usuario.service';
 import { HomeOutComponent } from './home-out.component';
 

@@ -1,12 +1,15 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { DiagnosticService } from "./diagnostic.service";
 
-describe('EnviarDiagnosticoService', () => {
+describe('DiagnosticService', () => {
   let service: DiagnosticService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     service = TestBed.inject(DiagnosticService);
   });
 
