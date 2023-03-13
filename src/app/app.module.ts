@@ -22,6 +22,7 @@ import { DetalleCasoComponent } from './components/diagnostico/detalle-caso/deta
 import { SharedModule } from './shared/shared.module';
 import { HistoriaClinicaComponent } from './components/reportes/historia-clinica/historia-clinica.component';
 import { TiposReporteComponent } from './components/reportes/tipos-reporte/tipos-reporte.component';
+import { SlicePipe } from '@angular/common';
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import { TiposReporteComponent } from './components/reportes/tipos-reporte/tipos
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [SlicePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

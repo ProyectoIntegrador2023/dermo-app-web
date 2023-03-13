@@ -6,6 +6,7 @@ import {
   InjuryReportDetailedRs,
   InjuryReportRs,
 } from '../models/injury-report-rs.model';
+import { PatientsRegistered } from '../models/patients-registered.model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,12 +41,12 @@ export class MedicalRecordService {
   }
 
   getAllPatientsRegistered(
-  ): Observable<any> {
+  ): Observable<{usuarios: PatientsRegistered[]}> {
     let headers = new HttpHeaders();
     headers = headers
       .set('Content-Type', 'application/json; charset=utf-8')
       .set('dermo-traceability-id', 'b8e8a459-d34f-4ff9-8a97-203d55c659eb');
-    return this.http.get<any>(`${INJURY_REPORT_ENDPOINT.baseEndpoint}${INJURY_REPORT_ENDPOINT.getAllPatientsPath}`,
+    return this.http.get<{usuarios: PatientsRegistered[]}>(`${INJURY_REPORT_ENDPOINT.baseEndpoint}${INJURY_REPORT_ENDPOINT.getAllPatientsPath}`,
     { headers });
   }
 

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {JwtHelperService} from '@auth0/angular-jwt';
 import {ToastrService} from 'ngx-toastr';
 import {LoaderService} from 'src/app/services/loader.service';
 import {UserProfileRq} from '../models/userProfile.model';
@@ -19,7 +18,6 @@ export class CrearPerfilComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  helper = new JwtHelperService();
   profileDto: UserProfileRq;
   formCrearPerfil!: FormGroup;
   ciudades: any[] = [];

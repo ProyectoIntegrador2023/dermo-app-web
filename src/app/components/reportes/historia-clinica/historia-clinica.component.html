@@ -1,71 +1,81 @@
-<div class="contenedor-lista-historias">
-  <div class="flex justify-content-between align-items-center">
-    <div>
-      <h2 class="titulo">Historia pacientes</h2>
+<div class="mr-container">
+  <div class="header">
+    <div class="title">
+      Historia pacientes
     </div>
     <div>
-      <button type="submit" class="btn btn-primary">Buscar</button>
+      <!-- <button type="submit" class="btn btn-primary btn-search">Buscar</button> -->
     </div>
   </div>
-  <div class="mostrar-lista-historias">
-    <div class="tablas">
-      <div class="contenedor-tabla">
-        <div class="tabla-detalles">
-          <div class="fila">
-            <div class="celda-campo">Identificación:</div>
-            <div class="celda-dato-busqueda">
-              <input type="text" id="identificacion" placeholder="Ingresa identificación">
-            </div>
-          </div>
-        </div>
-        <div class="tabla-detalles">
-          <div class="fila">
-            <div class="celda-campo">Nombre:</div>
-            <div class="celda-dato-busqueda">
-              <input type="text" id="nombre" placeholder="Ingresa infromación">
-            </div>
-          </div>
-        </div>
-        <div class="tabla-detalles">
-          <div class="fila">
-            <div class="celda-campo">Edad:</div>
-            <div class="celda-dato-busqueda">
-              <input type="text" id="edad" placeholder="Selecciona rango">
-            </div>
-          </div>
-        </div>
-        <div class="tabla-detalles">
-          <div class="fila">
-            <div class="celda-campo">Fecha Registro:</div>
-            <div class="celda-dato-busqueda">
-              <input type="text" id="fechaRegistro" placeholder="Selecciona rango">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="seccion-imagen-lesion">
-        <h3>Observar lesión:</h3>
-        <div class="contenedor-tabla">
-          <div class="tabla-detalles">
-            <div class="fila">
-              <div class="celda-campo">Nombre:</div>
-              <div class="celda-dato">Juan</div>
-            </div>
-            <div class="fila">
-              <div class="celda-campo">Edad</div>
-              <div class="celda-dato">23</div>
-            </div>
-            <div class="fila">
-              <div class="celda-campo">Ubicacion</div>
-              <div class="celda-dato">Medellín</div>
-            </div>
-            <div class="fila">
-              <div class="celda-campo">Fecha Registro</div>
-              <div class="celda-dato">23-01-2023</div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+  <div class="body-container">
+
+    <div class="subtitle">
+      Filtrar por:
     </div>
+    <div class="filter-options-container">
+
+      <div class="filter-option">
+        <div class="row">
+          <div class="fieldname">Nombre:</div>
+          <div>
+            <input type="text" id="search-name" class="fieldvalue" [ngModel]="searchText"
+            (ngModelChange)="filterByName($event)">
+          </div>
+        </div>
+        <div class="row">
+          <div class="fieldname">Fecha registro:</div>
+          <div class="fieldvalue">
+            <input type="date" id="search-date" [ngModel]="searchDate"
+            (ngModelChange)="filterByDate($event)">
+          </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+          <button type="button" class="btn-clean-search" (click)="cleanSearch()">Limpiar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="subtitle">
+      Listado:
+    </div>
+
+    <div class="table-container">
+      <table class="table" style="border-spacing: 0 10px 0 0;">
+        <thead class="table__header">
+          <tr class="table__row">
+            <th class="table__th">Nombre</th>
+            <th class="table__th">Edad</th>
+            <th class="table__th">Ubicación</th>
+            <th class="table__th">Fecha Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table__row" *ngFor="let patient of patientsRegisteredFiltered" (click)="goToDiagnostic(patient)">
+            <td class="table__cell">
+              {{patient.nombre}}
+            </td>
+            <td class="table__cell">
+              {{patient.edad}}
+            </td>
+            <td class="table__cell">
+              {{patient.ciudad}}
+            </td>
+            <td class="table__cell">
+              {{patient.created_at}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="patientsRegisteredFiltered && patientsRegisteredFiltered.length === 0">
+        <div>No hay Pacientes que hayan reportado lesión.</div>
+      </div>
+
+    </div>
+
   </div>
+
 </div>

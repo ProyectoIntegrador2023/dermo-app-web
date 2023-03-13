@@ -46,7 +46,7 @@ describe('CrearPerfilMedicoComponent', () => {
   });
 
   it('should create the form with required fields', () => {
-    const perfilServiceSpy = jasmine.createSpyObj('PerfilService', {
+    jasmine.createSpyObj('PerfilService', {
       'getProfileDoctor': of('mock data'),
       'userProfileDoctor': 'some val'
     });
@@ -58,7 +58,7 @@ describe('CrearPerfilMedicoComponent', () => {
   });
 
   it('should call getMedicProfile on init', () => {
-    const perfilServiceSpy = jasmine.createSpyObj('PerfilService', {
+    jasmine.createSpyObj('PerfilService', {
       'getProfileDoctor': of('mock data'),
       'userProfileDoctor': 'some val'
     });
