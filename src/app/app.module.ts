@@ -20,6 +20,9 @@ import { TipoLesionComponent } from './components/diagnostico/tipo-lesion/tipo-l
 import { CasosComponent } from './components/diagnostico/casos/casos.component';
 import { DetalleCasoComponent } from './components/diagnostico/detalle-caso/detalle-caso.component';
 import { SharedModule } from './shared/shared.module';
+import { HistoriaClinicaComponent } from './components/reportes/historia-clinica/historia-clinica.component';
+import { TiposReporteComponent } from './components/reportes/tipos-reporte/tipos-reporte.component';
+import { SlicePipe } from '@angular/common';
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { SharedModule } from './shared/shared.module';
     LoaderComponent,
     TipoLesionComponent,
     CasosComponent,
-    DetalleCasoComponent
+    DetalleCasoComponent,
+    HistoriaClinicaComponent,
+    TiposReporteComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [SlicePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

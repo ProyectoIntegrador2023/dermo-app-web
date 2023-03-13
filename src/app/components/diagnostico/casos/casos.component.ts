@@ -13,9 +13,10 @@ import { MedicalRecordService } from 'src/app/services/medical-record.service';
 export class CasosComponent implements OnInit {
 
   injuryTypeParam: string;
+  patientEmailParam: string;
   injuryList: InjuryReportInfo[]
   injuryListFiltered: InjuryReportInfo[]
-  searchText: string;
+  searchText = '';
 
   constructor(
     public readonly medicalRecordService: MedicalRecordService,
@@ -26,8 +27,19 @@ export class CasosComponent implements OnInit {
 
   ngOnInit() {
     this.loaderService.show();
-    this.route.queryParams.subscribe((params: Params) => this.injuryTypeParam = params['tipo-lesion']);
+    this.route.queryParams.subscribe((params: Params) => {
+      this.injuryTypeParam = params['tipo-lesion'];
+      this.patientEmailParam = params['paciente'];
+    });
 
+    if(this.injuryTypeParam) {
+      this.getAllInjuriesByType();
+    } else if(this.patientEmailParam) {
+      this.getInjuriesByPatient();
+    }
+  }
+
+  getAllInjuriesByType() {
     this.medicalRecordService.getAllInjuryFromPacients().pipe(
       finalize(() => {
         this.loaderService.hide();
@@ -43,6 +55,30 @@ export class CasosComponent implements OnInit {
             return resp.tipo_de_lesion == this.injuryTypeParam
           })
         }
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  getInjuriesByPatient() {
+    this.medicalRecordService.getAllInjuryFromPacientsByEmail(this.patientEmailParam).pipe(
+      finalize(() => {
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (data) => {
+        console.log(data);
+        console.log('injuryTypeParam ', this.injuryTypeParam)
+        console.log('patientEmailParam ', this.patientEmailParam)
+        this.injuryListFiltered = data.lesiones.map((resp) => {
+          console.log(resp.correo_electronico)
+          resp.correo_electronico = this.patientEmailParam;
+          console.log(resp.correo_electronico)
+          return resp
+        })
+        this.injuryList = this.injuryListFiltered;
       },
       error: (err) => {
         console.error(err);

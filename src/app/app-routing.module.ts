@@ -10,6 +10,8 @@ import {CasosComponent} from "./components/diagnostico/casos/casos.component";
 import {DetalleCasoComponent} from "./components/diagnostico/detalle-caso/detalle-caso.component";
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ProfileGuard } from './shared/guards/profile.guard';
+import {TiposReporteComponent} from "./components/reportes/tipos-reporte/tipos-reporte.component";
+import {HistoriaClinicaComponent} from "./components/reportes/historia-clinica/historia-clinica.component";
 
 
 const routes: Routes = [
@@ -50,6 +52,14 @@ const routes: Routes = [
         path: 'diagnosticos/tipo-lesion/casos/detalle-caso',
         component: DetalleCasoComponent,
         canActivate: [ProfileGuard],
+      },
+      {
+        path: 'reportes/tipos-reporte',
+        component: TiposReporteComponent,
+      },
+      {
+        path: 'reportes/tipos-reporte/historia-clinica',
+        component: HistoriaClinicaComponent,
       },
     ],
   },
