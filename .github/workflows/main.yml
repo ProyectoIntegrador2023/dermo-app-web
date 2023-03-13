@@ -64,14 +64,8 @@ jobs:
       - name: Test
         run: |
           npm run test-headless
-  sonarcloud:
-    needs: ci
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - name: Unit test
-        run: npm run test-headless
-      - uses: actions/checkout@v3
+      - name: SonarCloud
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
