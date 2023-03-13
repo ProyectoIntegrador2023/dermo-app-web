@@ -2,7 +2,7 @@
   <h2 class="titulo">Casos {{injuryTypeParam}}:</h2>
   <div class="filtro-busqueda">
     <form class="form-busqueda flex justify-content-between align-items-center">
-      <input type="text" id="busqueda" name="busqueda" placeholder="Buscar casos..." [ngModel]="searchText"
+      <input type="text" id="busqueda" name="busqueda" placeholder="Buscar casos..." [(ngModel)]="searchText"
              (ngModelChange)="filtrar(searchText)">
       <button class="btn-limpiar" type="button" (click)="limpiar()">Limpiar</button>
     </form>
