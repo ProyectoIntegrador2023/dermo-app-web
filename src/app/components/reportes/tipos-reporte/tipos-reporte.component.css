@@ -21,6 +21,12 @@ main {
   align-items: center;
 }
 
+.text-titulo {
+  color: #042E5C;
+  font-weight: bold;
+  font-style: italic;
+}
+
 .image-home{
   width: 100%;
 }
@@ -34,5 +40,17 @@ img {
 
 .image-home img {
   max-width: 185px;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo{
+  color: #096FDB;
+  font-style: italic;
+  font-weight: bold;
 }
 
