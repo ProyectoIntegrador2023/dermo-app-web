@@ -65,10 +65,11 @@ jobs:
         run: |
           npm run test-headless
   sonarcloud:
+    needs: ci
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Unit test
         run: npm run test-headless
       - uses: actions/checkout@v3
         with:
@@ -79,6 +80,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   cd:
+    needs: ci
     if: github.ref == 'refs/heads/Develop' || github.ref == 'refs/heads/main'
     name: Angular GitHub CI-CD
     runs-on: ubuntu-20.04
