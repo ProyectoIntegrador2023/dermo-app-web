@@ -51,12 +51,14 @@ export class MedicalRecordService {
   }
 
   checkInjuryImage(urlImage: string) {
+    const initialBase64Image = 'data:image/png;base64,';
     const defaultImage = 'assets/img/lesion.svg';
-    const base64regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
-    const isBase64Img = base64regex.test(urlImage.replace('data:image/png;base64,',''));
-    if(isBase64Img) {
+    if(urlImage === defaultImage || urlImage.includes('assets')) {
       return urlImage;
+    } else if(urlImage.includes('base64/foto')) {
+      return defaultImage;
+    } else {
+      return initialBase64Image+urlImage.replace(initialBase64Image,'').replace('base64,','');
     }
-    return defaultImage;
   }
 }
