@@ -7,6 +7,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 import {UserSignUpRq, UserSignUpRs} from '../models/userSignUp.model';
 import {LoaderService} from 'src/app/services/loader.service';
 import {finalize} from "rxjs";
+import { UserSignInRs } from '../models/userSignIn.model';
 
 export function ConfirmPasswordValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
@@ -79,15 +80,33 @@ export class UsuarioSignupComponent implements OnInit {
     ).subscribe({
       next: (res: UserSignUpRs) => {
         console.log(res);
-        sessionStorage.setItem('lastLoginAt', res.lastLoginAt);
         sessionStorage.setItem('email', res.email);
         this.showSuccess();
-        this.router.navigate(['/home-in']);
+        this.logInUsuario()
       },
       error: (error) => {
         console.error(error);
         this.error = true;
         this.showError('El usuario ya existe, inicia sesión.');
+      }
+    })
+  }
+
+  logInUsuario() {
+    this.loaderService.show();
+    this.usuarioService.userLogIn(this.signUpDto).pipe(
+      finalize(()=>{
+        this.loaderService.hide();
+      })
+    ).subscribe({
+      next: (res: UserSignInRs) => {
+        console.log(res);
+        sessionStorage.setItem('token', res.token);
+        sessionStorage.setItem('email', res.email);
+        this.router.navigate(['/home-in']);
+      },
+      error: (error) => {
+        console.error(error);
       }
     })
   }

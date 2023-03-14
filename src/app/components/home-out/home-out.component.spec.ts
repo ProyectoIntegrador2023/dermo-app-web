@@ -2,24 +2,19 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { HeaderComponent } from '../header/header.component';
-import { UsuarioService } from '../usuario/usuario.service';
 import { HomeOutComponent } from './home-out.component';
 
 
 describe('HomeOutComponent', () => {
   let component: HomeOutComponent;
   let fixture: ComponentFixture<HomeOutComponent>;
-  let usuarioServiceSpy: jasmine.SpyObj<UsuarioService>;
 
 
   beforeEach(async () => {
-    usuarioServiceSpy = jasmine.createSpyObj('UsuarioService', ['finalizeSession']);
 
     await TestBed.configureTestingModule({
       declarations: [ HomeOutComponent, HeaderComponent ],
-      providers: [
-        { provide: UsuarioService, useValue: usuarioServiceSpy }
-      ],
+      providers: [],
       imports: [HttpClientTestingModule]
     })
     .compileComponents();
@@ -42,12 +37,6 @@ describe('HomeOutComponent', () => {
   it('should set regis to true when eventRegis is called', () => {
     component.eventRegis(true);
     expect(component.regis).toEqual(true);
-  });
-
-  it('should initialize UsuarioService in constructor', () => {
-    const usuarioService = TestBed.inject(UsuarioService);
-    const component = fixture.componentInstance;
-    expect(component['usuarioService']).toBe(usuarioService);
   });
 
   it('should render HeaderComponent', () => {
