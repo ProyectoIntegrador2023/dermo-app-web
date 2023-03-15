@@ -4,49 +4,49 @@
       "id": "1",
       "nombre": "Macula",
       "descripcion": "Anillo",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-1.svg"
     },
     {
       "id": "2",
       "nombre": "Pápula",
       "descripcion": "Anillo",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-2.svg"
     },
     {
       "id": "3",
       "nombre": "Parche",
       "descripcion": "Domo",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-3.svg"
     },
     {
       "id": "4",
       "nombre": "Placa",
       "descripcion": "Ovalada",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-4.svg"
     },
     {
       "id": "5",
       "nombre": "Nódulo",
       "descripcion": "Indefinida",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-5.svg"
     },
     {
       "id": "6",
       "nombre": "Ampolla",
       "descripcion": "Indefinida",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-6.svg"
     },
     {
       "id": "7",
       "nombre": "Úlcera",
       "descripcion": "Redonda",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-7.svg"
     },
     {
       "id": "8",
       "nombre": "Vesicula",
       "descripcion": "Ovalada",
-      "imagen": "assets/img/lesion.svg"
+      "imagen": "assets/img/lesion-8.svg"
     }
   ]
 }
