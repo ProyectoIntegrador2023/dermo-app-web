@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UsuarioService } from '../usuario/usuario.service';
 
 @Component({
   selector: 'app-home-out',
@@ -7,12 +6,6 @@ import { UsuarioService } from '../usuario/usuario.service';
   styleUrls: ['./home-out.component.css']
 })
 export class HomeOutComponent {
-
-  constructor (
-    private usuarioService: UsuarioService
-    ){
-      this.usuarioService.finalizeSession();
-    }
 
   login = false;
   regis = false;

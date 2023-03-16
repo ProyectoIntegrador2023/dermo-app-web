@@ -64,19 +64,13 @@ jobs:
       - name: Test
         run: |
           npm run test-headless
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   cd:
+    needs: ci
     if: github.ref == 'refs/heads/Develop' || github.ref == 'refs/heads/main'
     name: Angular GitHub CI-CD
     runs-on: ubuntu-20.04
