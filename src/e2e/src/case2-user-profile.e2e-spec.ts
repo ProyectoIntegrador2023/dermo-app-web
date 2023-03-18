@@ -1,4 +1,4 @@
-import { browser, by, element, logging, protractor } from 'protractor';
+import { browser, by, element, protractor } from 'protractor';
 
 describe('Dermo App User profile', function() {
 
@@ -58,15 +58,5 @@ describe('Dermo App User profile', function() {
     ).toBeTruthy();
 
     browser.sleep(5000)
-
-
   });
-
-  afterEach(async () => {
-    // const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    // expect(logs).not.toContain(jasmine.objectContaining({
-    //   level: logging.Level.SEVERE,
-    // } as logging.Entry));
-  });
-
 });

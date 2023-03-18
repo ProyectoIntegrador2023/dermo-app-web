@@ -1,4 +1,4 @@
-import { browser, by, element, logging, protractor } from 'protractor';
+import { browser, by, element, protractor } from 'protractor';
 import path = require('path');
 
 describe('Dermo App Medic profile', function() {
@@ -10,7 +10,6 @@ describe('Dermo App Medic profile', function() {
   const specialty = 'Alergias';
   const licenceId = 'LIC23345434';
   const licenceFile = '../assets/img/licenceImg.png';
-  // const licenceValidity = '02/10/2025';
   const licenceValidityYear = '2025';
   const licenceValidityMonth = '10';
   const licenceValidityDay = '02';
@@ -69,15 +68,5 @@ describe('Dermo App Medic profile', function() {
     ).toBeTruthy();
 
     browser.sleep(5000)
-
-
   });
-
-  afterEach(async () => {
-    // const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    // expect(logs).not.toContain(jasmine.objectContaining({
-    //   level: logging.Level.SEVERE,
-    // } as logging.Entry));
-  });
-
 });

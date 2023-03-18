@@ -1,4 +1,4 @@
-import { browser, by, element, logging, protractor } from 'protractor';
+import { browser, by, element, protractor } from 'protractor';
 import { faker } from '@faker-js/faker';
 
 describe('Dermo App Register', function() {
@@ -57,15 +57,5 @@ describe('Dermo App Register', function() {
     ).toBeTruthy();
 
     browser.sleep(5000)
-
-
   });
-
-  afterEach(async () => {
-    // const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    // expect(logs).not.toContain(jasmine.objectContaining({
-    //   level: logging.Level.SEVERE,
-    // } as logging.Entry));
-  });
-
 });
