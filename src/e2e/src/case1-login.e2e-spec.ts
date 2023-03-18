@@ -6,7 +6,11 @@ describe('Dermo App Login', function() {
     browser.get(browser.baseUrl);
   });
 
+<<<<<<< HEAD
   const email = 'e2e@email.com';
+=======
+  const email = 'e2e1@email.com';
+>>>>>>> 90d85c92111d0c0061487f73ab18943941db5b79
   const password = '12345';
 
   it('check login', async () => {
