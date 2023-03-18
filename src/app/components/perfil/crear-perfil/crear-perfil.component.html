@@ -52,7 +52,7 @@
       <img src="assets/img/ubicacion.svg" alt="">
       <select id="ciudad" formControlName="city">
         <option value="" disabled selected>Ciudad o municipio</option>
-        <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ciudad}}</option>
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ciudad}}</option>
       </select>
     </div>
     <div *ngIf="formCrearPerfil.controls['city'].touched && formCrearPerfil.controls['city'].errors?.required"
